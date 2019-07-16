@@ -69,6 +69,7 @@
     <!-- Google Fonts
         ============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    @yield('cssHeader') 
     <script src="{{asset('frontEnd')}}/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <!--===================================================-->
@@ -995,7 +996,7 @@
         ============================================ -->
     <script src="{{asset('frontEnd')}}/js/main.js"></script>
     
-
+    @yield('scriptHeader')
 </body>
 
 </html>

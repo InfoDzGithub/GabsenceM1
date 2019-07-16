@@ -1,6 +1,28 @@
-@section('title','LRI | detail d un enseignant')
+@extends('layout.master')
 
+@section('title','LRI | details un enseignant')
+@section('cssHeader')
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+        <!-- page specific plugin styles -->
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/jquery-ui.custom.min.css" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/jquery.gritter.min.css" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/select2.min.css" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/bootstrap-datepicker3.min.css" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/bootstrap-editable.min.css" />
+
+        <!-- text fonts -->
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/fonts.googleapis.com.css" />
+
+        <!-- ace styles -->
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/ace-skins.min.css" />
+        <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/ace-rtl.min.css" />
+@endsection
 @section('asidebar')
+
+
                     <ul class="nav navbar-nav left-sidebar-menu-pro">
                         <li class="nav-item">
                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Home</span> </a>
@@ -29,599 +51,1164 @@
                             
                         </li>
                     </ul>
-@endsection           
-<!--@section('content')   
+     @endsection
+@section('content')   
+<div class="tab-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="composemail" class="tab-pane fade in animated zoomInDown shadow-reset custom-inbox-message active">
+                <div class="clearfix">
+                    <div class="hr dotted"></div>
+                    <div >
+                        <div id="user-profile-2" class="user-profile">
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs padding-18">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#home">
+                                            <i class="green ace-icon fa fa-user bigger-120"></i>
+                                            Profile
+                                        </a>
+                                    </li>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12">
-                <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <div class="admin-logo logo-wrap-pro">
-                    <a href="#"><img src="{{asset('frontEnd')}}/img/logo/log.png" alt="" />
-                                    </a>
-                </div>
-            </div>
-                          
-            <div class="col-lg-11 col-md-5 col-sm-6 col-xs-12">
-                <div class="header-right-info">
-                    <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                        <li class="nav-item dropdown">
-                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span class="adminpro-icon adminpro-chat-pro"></span><span class="indicator-ms"></span>
-                            </a>
-                            <div role="menu" class="author-message-top dropdown-menu animated flipInX">
-                                <div class="message-single-top">
-                                    <h1>Message</h1>
-                                </div>
-                                <ul class="message-menu">
                                     <li>
-                                        <a href="#">
-                                            <div class="message-img">
-                                                <img src="{{asset('frontEnd')}}/img/message/1.jpg" alt="">
-                                            </div>
-                                            <div class="message-contentt">
-                                                <span class="message-date">16 Sept</span>
-                                                <h2>Advanda Cro</h2>
-                                                <p>Please done this project as soon possible.</p>
-                                            </div>
+                                        <a data-toggle="tab" href="#feed">
+                                            <i class="orange ace-icon fa fa-rss bigger-120"></i>
+                                            Modifier
                                         </a>
                                     </li>
+
                                     <li>
-                                        <a href="#">
-                                            <div class="message-img">
-                                                <img src="{{asset('frontEnd')}}/img/message/4.jpg" alt="">
-                                            </div>
-                                            <div class="message-contentt">
-                                                <span class="message-date">16 Sept</span>
-                                                <h2>Sulaiman din</h2>
-                                                <p>Please done this project as soon possible.</p>
-                                            </div>
+                                        <a data-toggle="tab" href="#friends">
+                                            <i class="blue ace-icon fa fa-users bigger-120"></i>
+                                            Friends
                                         </a>
                                     </li>
+
                                     <li>
-                                        <a href="#">
-                                            <div class="message-img">
-                                                <img src="{{asset('frontEnd')}}/img/message/3.jpg" alt="">
-                                            </div>
-                                            <div class="message-contentt">
-                                                <span class="message-date">16 Sept</span>
-                                                <h2>Victor Jara</h2>
-                                                <p>Please done this project as soon possible.</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="message-img">
-                                                <img src="{{asset('frontEnd')}}/img/message/2.jpg" alt="">
-                                            </div>
-                                            <div class="message-contentt">
-                                                <span class="message-date">16 Sept</span>
-                                                <h2>Victor Jara</h2>
-                                                <p>Please done this project as soon possible.</p>
-                                            </div>
+                                        <a data-toggle="tab" href="#pictures">
+                                            <i class="pink ace-icon fa fa-picture-o bigger-120"></i>
+                                            Pictures
                                         </a>
                                     </li>
                                 </ul>
-                                <div class="message-view">
-                                    <a href="#">View All Messages</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                            <div role="menu" class="notification-author dropdown-menu animated flipInX">
-                                                <div class="notification-single-top">
-                                                    <h1>Notifications</h1>
-                                                </div>
-                                                <ul class="notification-menu">
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <span class="adminpro-icon adminpro-checked-pro"></span>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Advanda Cro</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <span class="adminpro-icon adminpro-cloud-computing-down"></span>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Sulaiman din</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <span class="adminpro-icon adminpro-shield"></span>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Victor Jara</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <span class="adminpro-icon adminpro-analytics-arrow"></span>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Victor Jara</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <div class="notification-view">
-                                                    <a href="#">View All Notification</a>
-                                                </div>
-                                            </div>
-                        </li>
-                        <li class="nav-item">
-                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                <span class="adminpro-icon adminpro-user-rounded header-riht-inf"></span>
-                                                <span class="admin-name">Advanda Cro</span>
-                                                <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
-                                            </a>
-                                            <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
-                                                <li><a href="#"><span class="adminpro-icon adminpro-home-admin author-log-ic"></span>My Account</a>
-                                                </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-user-rounded author-log-ic"></span>My Profile</a>
-                                                </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-money author-log-ic"></span>User Billing</a>
-                                                </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-settings author-log-ic"></span>Settings</a>
-                                                </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-locked author-log-ic"></span>Log Out</a>
-                                                </li>
-                                            </ul>
-                        </li>
-                        <li class="nav-item nav-setting-open">
-                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-tasks"></i>
-                            </a>
 
-                            <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated flipInX">
-                                <ul class="nav nav-tabss custon-set-tab">
-                                    <li class="active"><a data-toggle="tab" href="#Notes">Notes</a>
-                                    </li>
-                                    <li><a data-toggle="tab" href="#Projects">Projects</a>
-                                    </li>
-                                    <li><a data-toggle="tab" href="#Settings">Settings</a>
-                                    </li>
-                                </ul>
+                                <div class="tab-content no-border padding-24">
+                                    <div id="home" class="tab-pane in active">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3 center">
+                                                <span class="profile-picture">
+                                                    <img class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="{{asset($membre->photo)}}" />
+                                                </span>
 
-                                <div class="tab-content">
-                                    <div id="Notes" class="tab-pane fade in active">
-                                        <div class="notes-area-wrap">
-                                            <div class="note-heading-indicate">
-                                                <h2><i class="fa fa-comments-o"></i> Latest Notes</h2>
-                                                <p>You have 10 new message.</p>
-                                            </div>
-                                            <div class="notes-list-area notes-menu-scrollbar">
-                                                <ul class="notes-menu-list">
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/5.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                    </li>
-                                                    <li><a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/1.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>    </a>
-                                                    <li>
-                                                    <a href="#">
-                                                    <div class="notes-list-flow">   <div class="notes-img"><img src="{{asset('frontEnd')}}/img/notification/2.jpg" alt="" />
+                                                <div class="space space-4"></div>
+
+                                                <a href="#" class="btn btn-sm btn-block btn-success">
+                                                    <i class="ace-icon fa fa-plus-circle bigger-120"></i>
+                                                    <span class="bigger-110">Add as a friend</span>
+                                                </a>
+
+                                                <a href="#" class="btn btn-sm btn-block btn-primary">
+                                                    <i class="ace-icon fa fa-envelope-o bigger-110"></i>
+                                                    <span class="bigger-110">Send a message</span>
+                                                </a>
+                                            </div><!-- /.col -->
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                <h4 class="blue">
+                                                    <span class="middle">{{$membre->nom}} {{$membre->prenom}}</span>
+
+                                                    <span class="label label-purple arrowed-in-right">
+                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+                                                        online
+                                                    </span>
+                                                </h4>
+
+                                                <div class="profile-user-info">
+                                                    <div class="profile-info-row">
+                                                         
+                                                        <div class="profile-info-name">Date de naissance  </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span>{{$membre->date_N}}</span>
                                                         </div>
-                                                        <div class="notes-content"><p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p><span>Yesterday 2:45 pm</span></div>
                                                     </div>
-                                                    </a>
-                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/3.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/4.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/5.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/6.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/1.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/2.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notes-list-flow">
-                                                                                <div class="notes-img">
-                                                                                    <img src="img/notification/3.jpg" alt="" />
-                                                                                </div>
-                                                                                <div class="notes-content">
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
-                                                                                    <span>Yesterday 2:45 pm</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="Projects" class="tab-pane fade">
-                                        <div class="projects-settings-wrap">
-                                            <div class="note-heading-indicate">
-                                                <h2><i class="fa fa-cube"></i> Latest projects</h2>
-                                                <p> You have 20 projects. 5 not completed.</p>
-                                            </div>
-                                            <div class="project-st-list-area project-st-menu-scrollbar">
-                                                <ul class="projects-st-menu-list">
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Web Development</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">1 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content">
-                                                                                    <p>Completion with: 28%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 28%;" class="progress-bar progress-bar-danger"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Software Development</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">2 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content project-rating-cl">
-                                                                                    <p>Completion with: 68%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 68%;" class="progress-bar"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Graphic Design</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">3 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content">
-                                                                                    <p>Completion with: 78%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 78%;" class="progress-bar"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Web Design</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">4 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content project-rating-cl2">
-                                                                                    <p>Completion with: 38%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 38%;" class="progress-bar progress-bar-danger"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Business Card</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">5 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content">
-                                                                                    <p>Completion with: 28%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 28%;" class="progress-bar progress-bar-danger"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Ecommerce Business</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">6 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content project-rating-cl">
-                                                                                    <p>Completion with: 68%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 68%;" class="progress-bar"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                    </li>
-                                                    <li>
-                                                    <a href="#">
-                                                    <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Woocommerce Plugin</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">7 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content">
-                                                                                    <p>Completion with: 78%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 78%;" class="progress-bar"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div></div></a></li>
-                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="project-list-flow">
-                                                                                <div class="projects-st-heading">
-                                                                                    <h2>Wordpress Theme</h2>
-                                                                                    <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
-                                                                                    <span class="project-st-time">9 hours ago</span>
-                                                                                </div>
-                                                                                <div class="projects-st-content project-rating-cl2">
-                                                                                    <p>Completion with: 38%</p>
-                                                                                    <div class="progress progress-mini">
-                                                                                        <div style="width: 38%;" class="progress-bar progress-bar-danger"></div>
-                                                                                    </div>
-                                                                                    <p>Project end: 4:00 pm - 12.06.2014</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="Settings" class="tab-pane fade">
-                                        <div class="setting-panel-area">
-                                            <div class="note-heading-indicate">
-                                                                <h2><i class="fa fa-gears"></i> Settings Panel</h2>
-                                                                <p> You have 20 Settings. 5 not completed.</p>
-                                            </div>
-                                            <ul class="setting-panel-list">
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Show notifications</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example">
-                                                                                    <label class="onoffswitch-label" for="example">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Disable Chat</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example3">
-                                                                                    <label class="onoffswitch-label" for="example3">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Enable history</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example4">
-                                                                                    <label class="onoffswitch-label" for="example4">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Show charts</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example7">
-                                                                                    <label class="onoffswitch-label" for="example7">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Update everyday</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example2">
-                                                                                    <label class="onoffswitch-label" for="example2">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Global search</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example6">
-                                                                                    <label class="onoffswitch-label" for="example6">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                                <li>
-                                                                    <div class="checkbox-setting-pro">
-                                                                        <div class="checkbox-title-pro">
-                                                                            <h2>Offline users</h2>
-                                                                            <div class="ts-custom-check">
-                                                                                <div class="onoffswitch">
-                                                                                    <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example5">
-                                                                                    <label class="onoffswitch-label" for="example5">
-                                                                                        <span class="onoffswitch-inner"></span>
-                                                                                        <span class="onoffswitch-switch"></span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                </li>
-                                            </ul>
 
+                                                    <div class="profile-info-row">
+
+                                                        <div class="profile-info-name">Email </div>
+
+                                                        <div class="profile-info-value">
+                                                            
+                                                            <span>{{$membre->email}}</span>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name"> Age </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span>{{$age}}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name"> Grade </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span>{{$membre->grade}}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name"> Role </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span>{{$membre->role}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="hr hr-8 dotted"></div>
+
+                                                <div class="profile-user-info">
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name"> Website </div>
+
+                                                        <div class="profile-info-value">
+                                                            <a href="#" target="_blank">www.alexdoe.com</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name">
+                                                            <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
+                                                        </div>
+
+                                                        <div class="profile-info-value">
+                                                            <a href="#">Find me on Facebook</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name">
+                                                            <i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
+                                                        </div>
+
+                                                        <div class="profile-info-value">
+                                                            <a href="#">Follow me on Twitter</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.col -->
+                                        </div><!-- /.row -->
+
+                                        <div class="space-20"></div>
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="widget-box transparent">
+                                                    <div class="widget-header widget-header-small">
+                                                        <h4 class="widget-title smaller">
+                                                            <i class="ace-icon fa fa-check-square-o bigger-110"></i>
+                                                            Little About Me
+                                                        </h4>
+                                                    </div>
+
+                                                    <div class="widget-body">
+                                                        <div class="widget-main">
+                                                            <p>
+                                                                My job is mostly lorem ipsuming and dolor sit ameting as long as consectetur adipiscing elit.
+                                                            </p>
+                                                            <p>
+                                                                Sometimes quisque commodo massa gets in the way and sed ipsum porttitor facilisis.
+                                                            </p>
+                                                            <p>
+                                                                The best thing about my job is that vestibulum id ligula porta felis euismod and nullam quis risus eget urna mollis ornare.
+                                                            </p>
+                                                            <p>
+                                                                Thanks for visiting my profile.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="widget-box transparent">
+                                                    <div class="widget-header widget-header-small header-color-blue2">
+                                                        <h4 class="widget-title smaller">
+                                                            <i class="ace-icon fa fa-lightbulb-o bigger-120"></i>
+                                                            My Skills
+                                                        </h4>
+                                                    </div>
+
+                                                    <div class="widget-body">
+                                                        <div class="widget-main padding-16">
+                                                            <div class="clearfix">
+                                                                <div class="grid3 center">
+                                                                    <div class="easy-pie-chart percentage" data-percent="45" data-color="#CA5952">
+                                                                        <span class="percent">45</span>%
+                                                                    </div>
+
+                                                                    <div class="space-2"></div>
+                                                                    Graphic Design
+                                                                </div>
+
+                                                                <div class="grid3 center">
+                                                                    <div class="center easy-pie-chart percentage" data-percent="90" data-color="#59A84B">
+                                                                        <span class="percent">90</span>%
+                                                                    </div>
+
+                                                                    <div class="space-2"></div>
+                                                                    HTML5 & CSS3
+                                                                </div>
+
+                                                                <div class="grid3 center">
+                                                                    <div class="center easy-pie-chart percentage" data-percent="80" data-color="#9585BF">
+                                                                        <span class="percent">80</span>%
+                                                                    </div>
+
+                                                                    <div class="space-2"></div>
+                                                                    Javascript/jQuery
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="hr hr-16"></div>
+
+                                                            <div class="profile-skills">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar" style="width:80%">
+                                                                        <span class="pull-left">HTML5 & CSS3</span>
+                                                                        <span class="pull-right">80%</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-success" style="width:72%">
+                                                                        <span class="pull-left">Javascript & jQuery</span>
+
+                                                                        <span class="pull-right">72%</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-purple" style="width:70%">
+                                                                        <span class="pull-left">PHP & MySQL</span>
+
+                                                                        <span class="pull-right">70%</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-warning" style="width:50%">
+                                                                        <span class="pull-left">Wordpress</span>
+
+                                                                        <span class="pull-right">50%</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-danger" style="width:38%">
+                                                                        <span class="pull-left">Photoshop</span>
+
+                                                                        <span class="pull-right">38%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div><!-- /#home -->
+
+                                    <div id="feed" class="tab-pane">
+                                        <div class="profile-feed row">
+                                            <div class="col-sm-6">
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <img class="pull-left" alt="Alex Doe's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" />
+                                                        <a class="user" href="#"> Alex Doe </a>
+                                                        changed his profile photo.
+                                                        <a href="#">Take a look</a>
+
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            an hour ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <img class="pull-left" alt="Susan Smith's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" />
+                                                        <a class="user" href="#"> Susan Smith </a>
+
+                                                        is now friends with Alex Doe.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            2 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
+                                                        <a class="user" href="#"> Alex Doe </a>
+                                                        joined
+                                                        <a href="#">Country Music</a>
+
+                                                        group.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            5 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <i class="pull-left thumbicon fa fa-picture-o btn-info no-hover"></i>
+                                                        <a class="user" href="#"> Alex Doe </a>
+                                                        uploaded a new photo.
+                                                        <a href="#">Take a look</a>
+
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            5 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <img class="pull-left" alt="David Palms's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar4.png" />
+                                                        <a class="user" href="#"> David Palms </a>
+
+                                                        left a comment on Alex's wall.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            8 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.col -->
+
+                                            <div class="col-sm-6">
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <i class="pull-left thumbicon fa fa-pencil-square-o btn-pink no-hover"></i>
+                                                        <a class="user" href="#"> Alex Doe </a>
+                                                        published a new blog post.
+                                                        <a href="#">Read now</a>
+
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            11 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <img class="pull-left" alt="Alex Doe's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" />
+                                                        <a class="user" href="#"> Alex Doe </a>
+
+                                                        upgraded his skills.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            12 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
+                                                        <a class="user" href="#"> Alex Doe </a>
+
+                                                        logged in.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            12 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <i class="pull-left thumbicon fa fa-power-off btn-inverse no-hover"></i>
+                                                        <a class="user" href="#"> Alex Doe </a>
+
+                                                        logged out.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            16 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-activity clearfix">
+                                                    <div>
+                                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
+                                                        <a class="user" href="#"> Alex Doe </a>
+
+                                                        logged in.
+                                                        <div class="time">
+                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                            16 hours ago
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tools action-buttons">
+                                                        <a href="#" class="blue">
+                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                                        </a>
+
+                                                        <a href="#" class="red">
+                                                            <i class="ace-icon fa fa-times bigger-125"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.col -->
+                                        </div><!-- /.row -->
+
+                                        <div class="space-12"></div>
+
+                                        <div class="center">
+                                            <button type="button" class="btn btn-sm btn-primary btn-white btn-round">
+                                                <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+                                                <span class="bigger-110">View more activities</span>
+
+                                                <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div><!-- /#feed -->
+
+                                    <div id="friends" class="tab-pane">
+                                        <div class="profile-users clearfix">
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar4.png" alt="Bob Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-online"></span>
+                                                                Bob Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">Content Editor</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
+                                                                <span class="green"> 20 mins ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" alt="Rose Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-offline"></span>
+                                                                Rose Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">Graphic Designer</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 grey"></i>
+                                                                <span class="grey"> 30 min ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar.png" alt="Jim Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-busy"></span>
+                                                                Jim Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">SEO &amp; Advertising</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 red"></i>
+                                                                <span class="grey"> 1 hour ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" alt="Alex Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-idle"></span>
+                                                                Alex Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">Marketing</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
+                                                                <span class=""> 40 minutes idle </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar2.png" alt="Phil Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-online"></span>
+                                                                Phil Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">Public Relations</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
+                                                                <span class="green"> 2 hours ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar3.png" alt="Susan Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-online"></span>
+                                                                Susan Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">HR Management</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
+                                                                <span class="green"> 20 mins ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" alt="Jennifer Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-offline"></span>
+                                                                Jennifer Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">Graphic Designer</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 grey"></i>
+                                                                <span class="grey"> 2 hours ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="itemdiv memberdiv">
+                                                <div class="inline pos-rel">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar3.png" alt="Alexa Doe's avatar" />
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="body">
+                                                        <div class="name">
+                                                            <a href="#">
+                                                                <span class="user-status status-offline"></span>
+                                                                Alexa Doe
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popover">
+                                                        <div class="arrow"></div>
+
+                                                        <div class="popover-content">
+                                                            <div class="bolder">Accounting</div>
+
+                                                            <div class="time">
+                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 grey"></i>
+                                                                <span class="grey"> 4 hours ago </span>
+                                                            </div>
+
+                                                            <div class="hr dotted hr-8"></div>
+
+                                                            <div class="tools action-buttons">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                                                                </a>
+
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hr hr10 hr-double"></div>
+
+                                        <ul class="pager pull-right">
+                                            <li class="previous disabled">
+                                                <a href="#">&larr; Prev</a>
+                                            </li>
+
+                                            <li class="next">
+                                                <a href="#">Next &rarr;</a>
+                                            </li>
+                                        </ul>
+                                    </div><!-- /#friends -->
+
+                                    <div id="pictures" class="tab-pane">
+                                        <ul class="ace-thumbnails">
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-1.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-2.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-3.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-4.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-5.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-6.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-1.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" data-rel="colorbox">
+                                                    <img alt="150x150" src="{{asset('frontEnd')}}/assets/images/gallery/thumb-2.jpg" />
+                                                    <div class="text">
+                                                        <div class="inner">Sample Caption on Hover</div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="tools tools-bottom">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-link"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-paperclip"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-pencil"></i>
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-times red"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div><!-- /#pictures -->
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                    <!-- page-content ENDS -->
                 </div>
             </div>
         </div>
     </div>
-                
-    
-@endsection-->
+</div>
+@endsection
+
+     
 
 
 @section('ChatBox')
@@ -665,5 +1252,541 @@
     </div>
 
 @endsection
+@section('scriptHeader')
+ <script src="assets/js/jquery-2.1.4.min.js"></script>
 
-       
+        <!-- <![endif]-->
+
+        <!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+        <script type="text/javascript">
+            if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+        </script>
+        <script src="assets/js/bootstrap.min.js"></script>
+
+        <!-- page specific plugin scripts -->
+
+        <!--[if lte IE 8]>
+          <script src="assets/js/excanvas.min.js"></script>
+        <![endif]-->
+        <script src="assets/js/jquery-ui.custom.min.js"></script>
+        <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="assets/js/jquery.gritter.min.js"></script>
+        <script src="assets/js/bootbox.js"></script>
+        <script src="assets/js/jquery.easypiechart.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="assets/js/jquery.hotkeys.index.min.js"></script>
+        <script src="assets/js/bootstrap-wysiwyg.min.js"></script>
+        <script src="assets/js/select2.min.js"></script>
+        <script src="assets/js/spinbox.min.js"></script>
+        <script src="assets/js/bootstrap-editable.min.js"></script>
+        <script src="assets/js/ace-editable.min.js"></script>
+        <script src="assets/js/jquery.maskedinput.min.js"></script>
+
+        <!-- ace scripts -->
+        <script src="assets/js/ace-elements.min.js"></script>
+        <script src="assets/js/ace.min.js"></script>
+
+        <!-- inline scripts related to this page -->
+        <script type="text/javascript">
+            jQuery(function($) {
+            
+                //editables on first profile page
+                $.fn.editable.defaults.mode = 'inline';
+                $.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
+                $.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>'+
+                                            '<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';    
+                
+                //editables 
+                
+                //text editable
+                $('#username')
+                .editable({
+                    type: 'text',
+                    name: 'username'        
+                });
+            
+            
+                
+                //select2 editable
+                var countries = [];
+                $.each({ "CA": "Canada", "IN": "India", "NL": "Netherlands", "TR": "Turkey", "US": "United States"}, function(k, v) {
+                    countries.push({id: k, text: v});
+                });
+            
+                var cities = [];
+                cities["CA"] = [];
+                $.each(["Toronto", "Ottawa", "Calgary", "Vancouver"] , function(k, v){
+                    cities["CA"].push({id: v, text: v});
+                });
+                cities["IN"] = [];
+                $.each(["Delhi", "Mumbai", "Bangalore"] , function(k, v){
+                    cities["IN"].push({id: v, text: v});
+                });
+                cities["NL"] = [];
+                $.each(["Amsterdam", "Rotterdam", "The Hague"] , function(k, v){
+                    cities["NL"].push({id: v, text: v});
+                });
+                cities["TR"] = [];
+                $.each(["Ankara", "Istanbul", "Izmir"] , function(k, v){
+                    cities["TR"].push({id: v, text: v});
+                });
+                cities["US"] = [];
+                $.each(["New York", "Miami", "Los Angeles", "Chicago", "Wysconsin"] , function(k, v){
+                    cities["US"].push({id: v, text: v});
+                });
+                
+                var currentValue = "NL";
+                $('#country').editable({
+                    type: 'select2',
+                    value : 'NL',
+                    //onblur:'ignore',
+                    source: countries,
+                    select2: {
+                        'width': 140
+                    },      
+                    success: function(response, newValue) {
+                        if(currentValue == newValue) return;
+                        currentValue = newValue;
+                        
+                        var new_source = (!newValue || newValue == "") ? [] : cities[newValue];
+                        
+                        //the destroy method is causing errors in x-editable v1.4.6+
+                        //it worked fine in v1.4.5
+                        /**         
+                        $('#city').editable('destroy').editable({
+                            type: 'select2',
+                            source: new_source
+                        }).editable('setValue', null);
+                        */
+                        
+                        //so we remove it altogether and create a new element
+                        var city = $('#city').removeAttr('id').get(0);
+                        $(city).clone().attr('id', 'city').text('Select City').editable({
+                            type: 'select2',
+                            value : null,
+                            //onblur:'ignore',
+                            source: new_source,
+                            select2: {
+                                'width': 140
+                            }
+                        }).insertAfter(city);//insert it after previous instance
+                        $(city).remove();//remove previous instance
+                        
+                    }
+                });
+            
+                $('#city').editable({
+                    type: 'select2',
+                    value : 'Amsterdam',
+                    //onblur:'ignore',
+                    source: cities[currentValue],
+                    select2: {
+                        'width': 140
+                    }
+                });
+            
+            
+                
+                //custom date editable
+                $('#signup').editable({
+                    type: 'adate',
+                    date: {
+                        //datepicker plugin options
+                            format: 'yyyy/mm/dd',
+                        viewformat: 'yyyy/mm/dd',
+                         weekStart: 1
+                         
+                        //,nativeUI: true//if true and browser support input[type=date], native browser control will be used
+                        //,format: 'yyyy-mm-dd',
+                        //viewformat: 'yyyy-mm-dd'
+                    }
+                })
+            
+                $('#age').editable({
+                    type: 'spinner',
+                    name : 'age',
+                    spinner : {
+                        min : 16,
+                        max : 99,
+                        step: 1,
+                        on_sides: true
+                        //,nativeUI: true//if true and browser support input[type=number], native browser control will be used
+                    }
+                });
+                
+            
+                $('#login').editable({
+                    type: 'slider',
+                    name : 'login',
+                    
+                    slider : {
+                         min : 1,
+                          max: 50,
+                        width: 100
+                        //,nativeUI: true//if true and browser support input[type=range], native browser control will be used
+                    },
+                    success: function(response, newValue) {
+                        if(parseInt(newValue) == 1)
+                            $(this).html(newValue + " hour ago");
+                        else $(this).html(newValue + " hours ago");
+                    }
+                });
+            
+                $('#about').editable({
+                    mode: 'inline',
+                    type: 'wysiwyg',
+                    name : 'about',
+            
+                    wysiwyg : {
+                        //css : {'max-width':'300px'}
+                    },
+                    success: function(response, newValue) {
+                    }
+                });
+                
+                
+                
+                // *** editable avatar *** //
+                try {//ie8 throws some harmless exceptions, so let's catch'em
+            
+                    //first let's add a fake appendChild method for Image element for browsers that have a problem with this
+                    //because editable plugin calls appendChild, and it causes errors on IE at unpredicted points
+                    try {
+                        document.createElement('IMG').appendChild(document.createElement('B'));
+                    } catch(e) {
+                        Image.prototype.appendChild = function(el){}
+                    }
+            
+                    var last_gritter
+                    $('#avatar').editable({
+                        type: 'image',
+                        name: 'avatar',
+                        value: null,
+                        //onblur: 'ignore',  //don't reset or hide editable onblur?!
+                        image: {
+                            //specify ace file input plugin's options here
+                            btn_choose: 'Change Avatar',
+                            droppable: true,
+                            maxSize: 110000,//~100Kb
+            
+                            //and a few extra ones here
+                            name: 'avatar',//put the field name here as well, will be used inside the custom plugin
+                            on_error : function(error_type) {//on_error function will be called when the selected file has a problem
+                                if(last_gritter) $.gritter.remove(last_gritter);
+                                if(error_type == 1) {//file format error
+                                    last_gritter = $.gritter.add({
+                                        title: 'File is not an image!',
+                                        text: 'Please choose a jpg|gif|png image!',
+                                        class_name: 'gritter-error gritter-center'
+                                    });
+                                } else if(error_type == 2) {//file size rror
+                                    last_gritter = $.gritter.add({
+                                        title: 'File too big!',
+                                        text: 'Image size should not exceed 100Kb!',
+                                        class_name: 'gritter-error gritter-center'
+                                    });
+                                }
+                                else {//other error
+                                }
+                            },
+                            on_success : function() {
+                                $.gritter.removeAll();
+                            }
+                        },
+                        url: function(params) {
+                            // ***UPDATE AVATAR HERE*** //
+                            //for a working upload example you can replace the contents of this function with 
+                            //examples/profile-avatar-update.js
+            
+                            var deferred = new $.Deferred
+            
+                            var value = $('#avatar').next().find('input[type=hidden]:eq(0)').val();
+                            if(!value || value.length == 0) {
+                                deferred.resolve();
+                                return deferred.promise();
+                            }
+            
+            
+                            //dummy upload
+                            setTimeout(function(){
+                                if("FileReader" in window) {
+                                    //for browsers that have a thumbnail of selected image
+                                    var thumb = $('#avatar').next().find('img').data('thumb');
+                                    if(thumb) $('#avatar').get(0).src = thumb;
+                                }
+                                
+                                deferred.resolve({'status':'OK'});
+            
+                                if(last_gritter) $.gritter.remove(last_gritter);
+                                last_gritter = $.gritter.add({
+                                    title: 'Avatar Updated!',
+                                    text: 'Uploading to server can be easily implemented. A working example is included with the template.',
+                                    class_name: 'gritter-info gritter-center'
+                                });
+                                
+                             } , parseInt(Math.random() * 800 + 800))
+            
+                            return deferred.promise();
+                            
+                            // ***END OF UPDATE AVATAR HERE*** //
+                        },
+                        
+                        success: function(response, newValue) {
+                        }
+                    })
+                }catch(e) {}
+                
+                /**
+                //let's display edit mode by default?
+                var blank_image = true;//somehow you determine if image is initially blank or not, or you just want to display file input at first
+                if(blank_image) {
+                    $('#avatar').editable('show').on('hidden', function(e, reason) {
+                        if(reason == 'onblur') {
+                            $('#avatar').editable('show');
+                            return;
+                        }
+                        $('#avatar').off('hidden');
+                    })
+                }
+                */
+            
+                //another option is using modals
+                $('#avatar2').on('click', function(){
+                    var modal = 
+                    '<div class="modal fade">\
+                      <div class="modal-dialog">\
+                       <div class="modal-content">\
+                        <div class="modal-header">\
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>\
+                            <h4 class="blue">Change Avatar</h4>\
+                        </div>\
+                        \
+                        <form class="no-margin">\
+                         <div class="modal-body">\
+                            <div class="space-4"></div>\
+                            <div style="width:75%;margin-left:12%;"><input type="file" name="file-input" /></div>\
+                         </div>\
+                        \
+                         <div class="modal-footer center">\
+                            <button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Submit</button>\
+                            <button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
+                         </div>\
+                        </form>\
+                      </div>\
+                     </div>\
+                    </div>';
+                    
+                    
+                    var modal = $(modal);
+                    modal.modal("show").on("hidden", function(){
+                        modal.remove();
+                    });
+            
+                    var working = false;
+            
+                    var form = modal.find('form:eq(0)');
+                    var file = form.find('input[type=file]').eq(0);
+                    file.ace_file_input({
+                        style:'well',
+                        btn_choose:'Click to choose new avatar',
+                        btn_change:null,
+                        no_icon:'ace-icon fa fa-picture-o',
+                        thumbnail:'small',
+                        before_remove: function() {
+                            //don't remove/reset files while being uploaded
+                            return !working;
+                        },
+                        allowExt: ['jpg', 'jpeg', 'png', 'gif'],
+                        allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
+                    });
+            
+                    form.on('submit', function(){
+                        if(!file.data('ace_input_files')) return false;
+                        
+                        file.ace_file_input('disable');
+                        form.find('button').attr('disabled', 'disabled');
+                        form.find('.modal-body').append("<div class='center'><i class='ace-icon fa fa-spinner fa-spin bigger-150 orange'></i></div>");
+                        
+                        var deferred = new $.Deferred;
+                        working = true;
+                        deferred.done(function() {
+                            form.find('button').removeAttr('disabled');
+                            form.find('input[type=file]').ace_file_input('enable');
+                            form.find('.modal-body > :last-child').remove();
+                            
+                            modal.modal("hide");
+            
+                            var thumb = file.next().find('img').data('thumb');
+                            if(thumb) $('#avatar2').get(0).src = thumb;
+            
+                            working = false;
+                        });
+                        
+                        
+                        setTimeout(function(){
+                            deferred.resolve();
+                        } , parseInt(Math.random() * 800 + 800));
+            
+                        return false;
+                    });
+                            
+                });
+            
+                
+            
+                //////////////////////////////
+                $('#profile-feed-1').ace_scroll({
+                    height: '250px',
+                    mouseWheelLock: true,
+                    alwaysVisible : true
+                });
+            
+                $('a[ data-original-title]').tooltip();
+            
+                $('.easy-pie-chart.percentage').each(function(){
+                var barColor = $(this).data('color') || '#555';
+                var trackColor = '#E2E2E2';
+                var size = parseInt($(this).data('size')) || 72;
+                $(this).easyPieChart({
+                    barColor: barColor,
+                    trackColor: trackColor,
+                    scaleColor: false,
+                    lineCap: 'butt',
+                    lineWidth: parseInt(size/10),
+                    animate:false,
+                    size: size
+                }).css('color', barColor);
+                });
+              
+                ///////////////////////////////////////////
+            
+                //right & left position
+                //show the user info on right or left depending on its position
+                $('#user-profile-2 .memberdiv').on('mouseenter touchstart', function(){
+                    var $this = $(this);
+                    var $parent = $this.closest('.tab-pane');
+            
+                    var off1 = $parent.offset();
+                    var w1 = $parent.width();
+            
+                    var off2 = $this.offset();
+                    var w2 = $this.width();
+            
+                    var place = 'left';
+                    if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) place = 'right';
+                    
+                    $this.find('.popover').removeClass('right left').addClass(place);
+                }).on('click', function(e) {
+                    e.preventDefault();
+                });
+            
+            
+                ///////////////////////////////////////////
+                $('#user-profile-3')
+                .find('input[type=file]').ace_file_input({
+                    style:'well',
+                    btn_choose:'Change avatar',
+                    btn_change:null,
+                    no_icon:'ace-icon fa fa-picture-o',
+                    thumbnail:'large',
+                    droppable:true,
+                    
+                    allowExt: ['jpg', 'jpeg', 'png', 'gif'],
+                    allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
+                })
+                .end().find('button[type=reset]').on(ace.click_event, function(){
+                    $('#user-profile-3 input[type=file]').ace_file_input('reset_input');
+                })
+                .end().find('.date-picker').datepicker().next().on(ace.click_event, function(){
+                    $(this).prev().focus();
+                })
+                $('.input-mask-phone').mask('(999) 999-9999');
+            
+                $('#user-profile-3').find('input[type=file]').ace_file_input('show_file_list', [{type: 'image', name: $('#avatar').attr('src')}]);
+            
+            
+                ////////////////////
+                //change profile
+                $('[data-toggle="buttons"] .btn').on('click', function(e){
+                    var target = $(this).find('input[type=radio]');
+                    var which = parseInt(target.val());
+                    $('.user-profile').parent().addClass('hide');
+                    $('#user-profile-'+which).parent().removeClass('hide');
+                });
+                
+                
+                
+                /////////////////////////////////////
+                $(document).one('ajaxloadstart.page', function(e) {
+                    //in ajax mode, remove remaining elements before leaving page
+                    try {
+                        $('.editable').editable('destroy');
+                    } catch(e) {}
+                    $('[class*=select2]').remove();
+                });
+            });
+        </script>
+
+<!--user profil 1 scripte -->
+
+
+
+
+
+    <!-- Chat Box End-->
+    <!-- jquery
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/vendor/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/bootstrap.min.js"></script>
+    <!-- meanmenu JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/jquery.meanmenu.js"></script>
+    <!-- mCustomScrollbar JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- sticky JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/jquery.scrollUp.min.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/wow/wow.min.js"></script>
+    <!-- counterup JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/counterup/jquery.counterup.min.js"></script>
+    <script src="{{asset('frontEnd')}}/js/counterup/waypoints.min.js"></script>
+    <script src="{{asset('frontEnd')}}/js/counterup/counterup-active.js"></script>
+    <!-- jvectormap JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="{{asset('frontEnd')}}/js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="{{asset('frontEnd')}}/js/jvectormap/jvectormap-active.js"></script>
+    <!-- peity JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/peity/jquery.peity.min.js"></script>
+    <script src="{{asset('frontEnd')}}/js/peity/peity-active.js"></script>
+    <!-- sparkline JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{asset('frontEnd')}}/js/sparkline/sparkline-active.js"></script>
+    <!-- flot JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/flot/Chart.min.js"></script>
+    <script src="{{asset('frontEnd')}}/js/flot/dashtwo-flot-active.js"></script>
+    <!-- data table JS
+        ============================================ -->
+    <script src="{{asset('frontEnd')}}/js/data-table/bootstrap-table.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/tableExport.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/data-table-active.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/bootstrap-table-editable.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/bootstrap-editable.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/colResizable-1.5.source.js"></script>
+    <script src="{{asset('frontEnd')}}/js/data-table/bootstrap-table-export.js"></script>
+@endsection

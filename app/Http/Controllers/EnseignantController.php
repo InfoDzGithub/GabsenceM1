@@ -91,18 +91,26 @@ class EnseignantController extends Controller
         return redirect('enseignant');
             //}
     }
-   public function details()
+   public function details($id)
     {
-       // $membre = Enseignant::find($id);
+        $membre = Enseignant::find($id);
       //  $matiere = Equipe::all();
-        
-
-
-        return view('admin.detailsEnseignant');//->with([
-            //'membre' => $membre//,
+        //calcul age
+        $am = explode('/', $membre->date_N);
+		$an = explode('/', date('d/m/Y'));
+		if(($am[1] < $an[1]) || (($am[1] == $an[1]) && ($am[0] <= $an[0]))) 
+			 
+		  
+	     { $age=$an[2] - $am[2];}
+		else {$age=$an[2] - $am[2] - 1;}
+              
+        return view('admin.detailsEnseignant')->with([
+            'membre' => $membre,
+            'age'=>$age
            // 'matiere' => $equipes,
+
             
             
-       // ]);
+       ]);
     } 
 }

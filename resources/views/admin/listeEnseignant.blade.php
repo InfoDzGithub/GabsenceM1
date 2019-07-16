@@ -124,7 +124,7 @@
           <form action="{{ url('enseignant/'.$membre->id)}}" method="post">
               {{csrf_field()}}
               {{method_field('DELETE')}}
-
+               
               <a href="{{ url('enseignant/'.$membre->id.'/details')}}" class="btn btn-info">
                 <i class="fa fa-eye"></i>
               </a>
