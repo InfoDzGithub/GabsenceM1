@@ -19,6 +19,6 @@ Route::get('enseignant','EnseignantController@index');
 Route::get('enseignant/create','EnseignantController@create');
 Route::get('enseignants','EnseignantController@store');
 Route::get('enseignant/{id}/details','EnseignantController@details');
-//Route::get('enseignant/{id}/edit','EnseignantController@edit');
-//Route::put('enseignant/{id}','EnseignantController@update');
+Route::get('enseignant/{id}/edit','EnseignantController@edit');
+Route::put('enseignant/{id}','EnseignantController@update');
 Route::delete('enseignant/{id}','EnseignantController@destroy');

@@ -63,14 +63,14 @@
                         <div id="user-profile-2" class="user-profile">
                             <div class="tabbable">
                                 <ul class="nav nav-tabs padding-18">
-                                    <li class="active">
+                                    <li >
                                         <a data-toggle="tab" href="#home">
                                             <i class="green ace-icon fa fa-user bigger-120"></i>
                                             Profile
                                         </a>
                                     </li>
 
-                                    <li>
+                                    <li class="active">
                                         <a data-toggle="tab" href="#feed">
                                             <i class="orange ace-icon fa fa-rss bigger-120"></i>
                                             Modifier
@@ -93,7 +93,7 @@
                                 </ul>
 
                                 <div class="tab-content no-border padding-24">
-                                    <div id="home" class="tab-pane in active">
+                                    <div id="home" class="tab-pane">
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-3 center">
                                                 <span class="profile-picture">
@@ -160,32 +160,32 @@
                                                         </div>
                                                     </div>
 
-                    <div class="profile-info-row">
-                    @if($membre->role== 'responsable' )
-                                <div class="profile-info-name"> Responsable sur : </div>
+                                                    <div class="profile-info-row">
+                                                    @if($membre->role== 'responsable' )
+                                                                <div class="profile-info-name"> Responsable sur : </div>
 
-                                <div class="profile-info-value">
-                                @foreach($matieres as $matiere)
-                                    <span>{{$matiere->nomMat}}</span><br>
+                                                                <div class="profile-info-value">
+                                                                @foreach($matieres as $matiere)
+                                                                    <span>{{$matiere->nomMat}}</span><br>
 
-                                @endforeach    
-                                     
-                                </div>
-                    @endif
-                    </div>
-                    <div class="profile-info-row">
-                    @if($membre->role== 'enseignant' )
-                                <div class="profile-info-name"> Enseigne : </div>
+                                                                @endforeach    
+                                                                     
+                                                                </div>
+                                                    @endif
+                                                    </div>
+                                                    <div class="profile-info-row">
+                                                    @if($membre->role== 'enseignant' )
+                                                                <div class="profile-info-name"> Enseigne : </div>
 
-                                <div class="profile-info-value">
-                                @foreach($matieres as $matiere)
-                                    <span>{{$matiere->nomMat}}</span><br>
+                                                                <div class="profile-info-value">
+                                                                @foreach($matieres as $matiere)
+                                                                    <span>{{$matiere->nomMat}}</span><br>
 
-                                @endforeach    
-                                     
-                                </div>
-                    @endif
-                    </div>
+                                                                @endforeach    
+                                                                     
+                                                                </div>
+                                                    @endif
+                                                    </div>
                                                 </div>
 
                                                 <div class="hr hr-8 dotted"></div>
@@ -253,262 +253,183 @@
                                                 </div>
                                             </div>
 
-                                          
+                                            
                                         </div>
                                     </div><!-- /#home -->
 
-                                    <div id="feed" class="tab-pane">
-                                        <div class="profile-feed row">
-                                            <div class="col-sm-6">
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="Alex Doe's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" />
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        changed his profile photo.
-                                                        <a href="#">Take a look</a>
+                                    <div id="feed" class="tab-pane in active">
+                                       
+                                        <!--debu-->
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3 center">
+                                                <span class="profile-picture">
+                                                    <img 
+                                                    style="height: 250px; width: 190px;"
+                                                    class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="{{asset($membre->photo)}}" />
+                                                </span>
 
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            an hour ago
-                                                        </div>
-                                                    </div>
+                                                <div class="space space-4"></div>
 
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="Susan Smith's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" />
-                                                        <a class="user" href="#"> Susan Smith </a>
-
-                                                        is now friends with Alex Doe.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            2 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        joined
-                                                        <a href="#">Country Music</a>
-
-                                                        group.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            5 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-picture-o btn-info no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        uploaded a new photo.
-                                                        <a href="#">Take a look</a>
-
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            5 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="David Palms's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar4.png" />
-                                                        <a class="user" href="#"> David Palms </a>
-
-                                                        left a comment on Alex's wall.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            8 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                
                                             </div><!-- /.col -->
 
-                                            <div class="col-sm-6">
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-pencil-square-o btn-pink no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        published a new blog post.
-                                                        <a href="#">Read now</a>
+                                            <div class="col-xs-12 col-sm-9">
+       <!--/****************************/-->     
+<fieldset>
+                        <!--nom-->
+                    <div class="form-group ">
+                        <label class="col-md-3 control-label">Nom</label>  
+                        <div class="col-md-9 inputGroupContainer @if($errors->get('name')) has-error @endif">
+                          <div class="input-group"  style="width: 40%">
+                            <input  name="name" class="form-control" value="bouchekif" type="text">
+                            
+                          </div>
+                        </div>
+                    </div>
+                    <!--prenom-->
+                     <br><br>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Prénom</label>  
+                        <div class="col-md-9 inputGroupContainer @if($errors->get('prenom')) has-error @endif">
+                          <div class="input-group"  style="width: 40%">
+                            <input  name="prenom" value="bouchekif" class="form-control"  type="text">
+                            
+                          </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <!--dateN-->
+                    <div class="row">
+                      <div class="col-md-7">
+                      <div class="form-group">
+                            <label class="col-md-6 control-label">Date_Naissance</label>  
+                            <div class="col-md-6 inputGroupContainer input-group Date">
+                              <input name="date_naissance" type="text" class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datepicker" value="14/55/89">
+                            </div>
+                      </div>
+                      </div>
+                    </div>
+                    <br><br>
+                    <!--sexe-->
+                    <div class="row">
+                      <div class="col-md-7">
+                      <div class="form-group">
+                              <label class="col-md-6 control-label">Sexe</label>  
+                                <div class="col-md-6 input-group">
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                       <label>
+                                       <input type="radio" value="Femme" name="sexe"> <i></i> femme 
+                                       </label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                       <label>
+                                       <input type="radio" checked="" value="Homme" name="sexe"> <i></i> homme 
+                                       </label>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <!--grade-->
+                    <br><br>
+                    <div class="form-group"> 
+                          <label class="col-md-3 control-label">Grade</label>
+                            <div class="col-md-9 selectContainer @if($errors->get('grade')) has-error @endif">
+                              <div class="input-group" style="width: 40%">
+                                  <select name="grade" class="form-control selectpicker">
+                                    <option>88</option>
+                                    <option>MAA</option>
+                                    <option>MAB</option>
+                                    <option >MCA</option>
+                                    <option >MCB</option>
+                                    <option>Doctorant</option>
+                                    <option >Professeur</option>
+                                  </select>
+                                  
+                              </div>
+                            </div>
+                    </div>
+                    <br><br>
+                    
 
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            11 hours ago
-                                                        </div>
-                                                    </div>
+                      
+                     <!--email-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">E-Mail</label>  
+                          <div class="col-md-9 inputGroupContainer @if($errors->get('email')) has-error @endif">
+                            <div class="input-group"  style="width: 40%">
+                                <input name="email" type="email" class="form-control" value="bouche@gmail.com">
+                                
+                            </div>
+                          </div>
+                    </div>
+                    
+                    <br><br>
+                    
 
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
+                      
+                     <!--numTel-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">N° Téléphone</label>  
+                          <div class="col-md-9 inputGroupContainer">
+                            <div class="col-md-6 input-group" style="width: 40%">
+                                <input name="num_tel" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="0444444444">
+                              </div>
+                          </div>
+                    </div>
+                     <br><br>
+                     
+                    <!--role-->
+                    <div class="row">
+                      <div class="col-md-7">
+                      <div class="form-group">
+                              <label class="col-md-6 control-label">Role</label>  
+                                <div class="col-md-6 input-group">
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                       <label>
+                                             <input type="radio"  value="responsable" name="role"> <i></i> Enseignant Normal</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                      <label>
+                                             <input type="radio" checked="" value="responsable" name="role"> <i></i> Enseignant Responsable</label>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+              </fieldset>
 
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
 
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="Alex Doe's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" />
-                                                        <a class="user" href="#"> Alex Doe </a>
 
-                                                        upgraded his skills.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            12 hours ago
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
 
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
 
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-
-                                                        logged in.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            12 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-power-off btn-inverse no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-
-                                                        logged out.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            16 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-
-                                                        logged in.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            16 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+        <!--******************************-->
                                             </div><!-- /.col -->
-                                        </div><!-- /.row -->
+                                        </div>
+                                        <!--fin-->
 
                                         <div class="space-12"></div>
 
-                                        <div class="center">
-                                            <button type="button" class="btn btn-sm btn-primary btn-white btn-round">
-                                                <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
-                                                <span class="bigger-110">View more activities</span>
-
-                                                <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
-                                            </button>
-                                        </div>
+                                        
                                     </div><!-- /#feed -->
 
                                     <div id="friends" class="tab-pane">
@@ -1187,42 +1108,7 @@
 
 @endsection
 @section('scriptHeader')
- <script src="assets/js/jquery-2.1.4.min.js"></script>
-
-        <!-- <![endif]-->
-
-        <!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-        <script type="text/javascript">
-            if('ontouchstart' in document.documentElement) document.write("<script src='{{asset('frontEnd')}}/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-        </script>
-        <script src="{{asset('frontEnd')}}/assets/js/bootstrap.min.js"></script>
-
-        <!-- page specific plugin scripts -->
-
-        <!--[if lte IE 8]>
-          <script src="assets/js/excanvas.min.js"></script>
-        <![endif]-->
-        <script src="{{asset('frontEnd')}}/assets/js/jquery-ui.custom.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/jquery.ui.touch-punch.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/jquery.gritter.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/bootbox.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/jquery.easypiechart.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/bootstrap-datepicker.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/jquery.hotkeys.index.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/bootstrap-wysiwyg.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/select2.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/spinbox.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/bootstrap-editable.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/ace-editable.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/jquery.maskedinput.min.js"></script>
-
-        <!-- ace scripts -->
-        <script src="{{asset('frontEnd')}}/assets/js/ace-elements.min.js"></script>
-        <script src="{{asset('frontEnd')}}/assets/js/ace.min.js"></script>
-
-        <!-- inline scripts related to this page -->
+ 
         <script type="text/javascript">
             jQuery(function($) {
             
@@ -1472,7 +1358,19 @@
                     })
                 }catch(e) {}
                 
-                
+                /**
+                //let's display edit mode by default?
+                var blank_image = true;//somehow you determine if image is initially blank or not, or you just want to display file input at first
+                if(blank_image) {
+                    $('#avatar').editable('show').on('hidden', function(e, reason) {
+                        if(reason == 'onblur') {
+                            $('#avatar').editable('show');
+                            return;
+                        }
+                        $('#avatar').off('hidden');
+                    })
+                }
+                */
             
                 //another option is using modals
                 $('#avatar2').on('click', function(){
@@ -1658,6 +1556,7 @@
 
 
     <!-- Chat Box End-->
+
     <!-- jquery
         ============================================ -->
     <script src="{{asset('frontEnd')}}/js/vendor/jquery-1.11.3.min.js"></script>
