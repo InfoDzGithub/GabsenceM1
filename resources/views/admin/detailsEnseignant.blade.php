@@ -160,13 +160,19 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> Role </div>
+                    <div class="profile-info-row">
+                    @if($membre->role== 'responsable' )
+                                <div class="profile-info-name"> Responsable sur : </div>
 
-                                                        <div class="profile-info-value">
-                                                            <span>{{$membre->role}}</span>
-                                                        </div>
-                                                    </div>
+                                <div class="profile-info-value">
+                                @foreach($matieres as $matiere)
+                                    <span>{{$matiere->nomMat}}</span><br>
+
+                                @endforeach    
+                                     
+                                </div>
+                    @endif
+                    </div>
                                                 </div>
 
                                                 <div class="hr hr-8 dotted"></div>
