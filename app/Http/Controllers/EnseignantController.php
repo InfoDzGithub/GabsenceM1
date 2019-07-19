@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests\userEditRequest;
+use App\Http\Requests\EditRequest;
 use Illuminate\Http\UploadedFile;
 
 
@@ -126,10 +126,15 @@ class EnseignantController extends Controller
                   ->where('enseignant_has_matiere.enseignants_id', '=',$id)
                   ->get();
         } 
+        
+             $membres=Enseignant::all();
+             
         return view('admin.detailsEnseignant')->with([
             'membre' => $membre,
             'age'=>$age,
-            'matieres' => $matieres
+            'matieres' => $matieres,
+            'membres' => $membres
+            
              
             
        ]);
@@ -138,7 +143,7 @@ class EnseignantController extends Controller
 /*****************************************************************/
 public function edit($id)
     {
-     $membre = Enseignant::find($id);
+      $membre = Enseignant::find($id);
         
         //***********calcul age******************
         $am = explode('/', $membre->date_N);
@@ -165,10 +170,13 @@ public function edit($id)
                   ->where('enseignant_has_matiere.enseignants_id', '=',$id)
                   ->get();
         } 
+        $membres=Enseignant::all();
         return view('admin.editEnseignant')->with([
             'membre' => $membre,
             'age'=>$age,
-            'matieres' => $matieres
+            'matieres' => $matieres,
+            'membres' => $membres
+
              
             
        ]);
@@ -176,48 +184,56 @@ public function edit($id)
         
     
     }
-/*
-    public function update(userEditRequest $request , $id)
+
+    public function update(Request $request , $id)
     {
-      
-        $membre = User::find($id);
-        $labo = Parametre::find('1');
+       $membre = Enseignant::find($id);
         
         if($request->hasFile('img')){
             $file = $request->file('img');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/photo'),$file_name);
 
-                        }
+                       }
+             
 
-        $membre->name = $request->input('name');
-        $membre->prenom = $request->input('prenom');
-        $membre->email = $request->input('email');
-        $membre->date_naissance = $request->input('date_naissance');
-        $membre->grade = $request->input('grade');
-                if((Auth::id() == $membre->id))
+            $membre->nom = $request->input('nom');
+            $membre->prenom = $request->input('prenom');
+            $membre->email = $request->input('email');
+            $membre->date_N = $request->input('date_naissance');
+            $membre->grade = $request->input('grade');
+            $membre->password = Hash::make($request->input('password'));
+            $membre->num_tel = $request->input('num_tel');
+            $membre->photo = 'uploads/photo/'.$file_name;
+
+             $fields = Input::get('sexe');
+                  if($fields == 'Femme'){
+                   $membre->sexe = $fields;
+                  }
+                  else {
+                    $filelds='Homme';
+                  $membre->sexe = $fields;
+                  }
+            $role = Input::get('role');
+                  if($role == 'responsable'){
+                   $membre->role = $role;
+                  }
+                  else {
+                    $role='enseignant';
+                  $membre->role = $role;
+                  }
+                
+                   
+            $membre->save();
+            /*if($membre->role== 'responsable')
                 {
-                $membre->password =Hash::make($request->input('password'));
-                }
-        $membre->equipe_id = $request->input('equipe_id');
-        $membre->num_tel = $request->input('num_tel');
-       
-        $membre->autorisation_public_num_tel = $request->input('autorisation_public_num_tel');
-        $membre->autorisation_public_photo = $request->input('autorisation_public_photo');
-        $membre->autorisation_public_date_naiss = $request->input('autorisation_public_date_naiss');
+                     $responsable=new Responsable();
+                 $responsable->enseignants_id = $membre->id;
+                 $responsable->save();
+                }*/
 
-        $membre->lien_rg = $request->input('lien_rg');
-        $membre->lien_linkedin = $request->input('lien_linkedin');
-        if ((Auth::user()->role->nom == 'admin')&& (Auth::id() != $membre->id))
-            {
-          $membre->role_id = $request->role_id;
-            }
-          
-        $membre->save();
-
-        return redirect('membres/'.$id.'/details');
+        return redirect('enseignant/'.$id.'/details');
 
     }
 
-*/
 }

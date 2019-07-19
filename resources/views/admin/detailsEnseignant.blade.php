@@ -2,6 +2,7 @@
 
 @section('title','LRI | details un enseignant')
 @section('cssHeader')
+
         <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
@@ -53,6 +54,17 @@
                     </ul>
      @endsection
 @section('content')   
+   <style>
+#photo {
+    border-radius: 50%;
+    width: 70px;height: 70px;
+    }
+    ul.a {
+    list-style-type: square;
+}
+
+
+</style>
 <div class="tab-content">
     <div class="row">
         <div class="col-lg-12">
@@ -97,7 +109,7 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-3 center">
                                                 <span class="profile-picture">
-                                                    <img class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="{{asset($membre->photo)}}" />
+                                                    <img class="editable img-responsive" alt="Alex's Avatar" src="{{asset($membre->photo)}}" />
                                                 </span>
 
                                                 <div class="space space-4"></div>
@@ -256,646 +268,262 @@
                                           
                                         </div>
                                     </div><!-- /#home -->
-
                                     <div id="feed" class="tab-pane">
-                                        <div class="profile-feed row">
-                                            <div class="col-sm-6">
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="Alex Doe's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" />
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        changed his profile photo.
-                                                        <a href="#">Take a look</a>
+                                       
+                                        <!--debu-->
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3 center">
+                                                <span class="profile-picture">
+                                                    <img 
+                                                    style="height: 250px; width: 190px;"
+                                                    class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="{{asset($membre->photo)}}" />
+                                                </span>
 
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            an hour ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="Susan Smith's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" />
-                                                        <a class="user" href="#"> Susan Smith </a>
-
-                                                        is now friends with Alex Doe.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            2 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        joined
-                                                        <a href="#">Country Music</a>
-
-                                                        group.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            5 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-picture-o btn-info no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        uploaded a new photo.
-                                                        <a href="#">Take a look</a>
-
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            5 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="David Palms's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar4.png" />
-                                                        <a class="user" href="#"> David Palms </a>
-
-                                                        left a comment on Alex's wall.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            8 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                <div class="space space-4"></div>
                                             </div><!-- /.col -->
+                                            
+                                            <div class="col-xs-12 col-sm-9">
+       <!--/****************************/-->  
+        <form class="well form-horizontal" action=" {{url('enseignant/'. $membre->id) }} " method="POST"  id="contact_form"> 
+        {{ csrf_field() }} 
+         <!--@csrf_field and {{ method_field('PUT') }}-->
+<fieldset>
+                        <!--nom-->
+                    <div class="form-group ">
+                        <label class="col-md-3 control-label">Nom</label>  
+                        <div class="col-md-9 inputGroupContainer ">
+                          <div class="input-group"  style="width: 40%">
+                            <input  name="nom" class="form-control" value="{{$membre->nom}}" type="text">
+                            
+                          </div>
+                        </div>
+                    </div>
+                    <!--prenom-->
+                     <br><br>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Prénom</label>  
+                        <div class="col-md-9 inputGroupContainer">
+                          <div class="input-group"  style="width: 40%">
+                            <input  name="prenom" value="{{$membre->prenom}}" class="form-control"  type="text">
+                            
+                          </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <!--dateN-->
+                    <div class="row">
+                      <div class="col-md-7">
+                      <div class="form-group">
+                            <label class="col-md-6 control-label">Date_Naissance</label>  
+                            <div class="col-md-6 inputGroupContainer input-group Date">
+                              <input name="date_naissance" type="text" class="form-control pull-right" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="datepicker" value="{{$membre->date_N}}">
+                            </div>
+                      </div>
+                      </div>
+                    </div>
+                    <br><br>
+                    <!--sexe-->
+                    <div class="row">
+                      <div class="col-md-7">
+                      <div class="form-group">
+                              <label class="col-md-6 control-label">Sexe</label>  
+                                <div class="col-md-6 input-group">
 
-                                            <div class="col-sm-6">
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-pencil-square-o btn-pink no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-                                                        published a new blog post.
-                                                        <a href="#">Read now</a>
+                                <div class="row">
+                                
+                                <div class="col-lg-12">
 
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            11 hours ago
-                                                        </div>
-                                                    </div>
+                                    <div class="i-checks pull-left">
+                                     @if($membre->sexe=='Homme')
+                                       <label>
 
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
+                                       <input type="radio" value="Femme" name="sexe"> <i></i> Femme 
+                                       </label>
+                                       @endif
+                                    @if($membre->sexe=='Femme')
+                                       <label>
 
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                       <input type="radio" value="Homme" name="sexe"> <i></i> Homme 
+                                       </label>
+                                       @endif
+                                    </div>
+                                </div>
+                                
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                       <label>
+                                       <input type="radio" checked="" value="{{$membre->sexe}}" name="sexe"> <i></i>{{$membre->sexe}}
+                                       </label>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <!--grade-->
+                    <br><br>
+                    <div class="form-group"> 
+                          <label class="col-md-3 control-label">Grade</label>
+                            <div class="col-md-9 selectContainer">
+                              <div class="input-group" style="width: 40%">
+                                  <select name="grade" class="form-control selectpicker">
+                                    <option>{{$membre->grade}}</option>
+                                    <option>MAA</option>
+                                    <option>MAB</option>
+                                    <option >MCA</option>
+                                    <option >MCB</option>
+                                    <option>Doctorant</option>
+                                    <option >Professeur</option>
+                                  </select>
+                                  
+                              </div>
+                            </div>
+                    </div>
+                    <br><br>
+                    
 
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <img class="pull-left" alt="Alex Doe's avatar" src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" />
-                                                        <a class="user" href="#"> Alex Doe </a>
+                      
+                     <!--email-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">E-Mail</label>  
+                          <div class="col-md-9 inputGroupContainer">
+                            <div class="input-group"  style="width: 40%">
+                                <input name="email" type="email" class="form-control" value="{{$membre->email}}">
+                                
+                            </div>
+                          </div>
+                    </div>
+                    
+                    <br><br>
+                    
 
-                                                        upgraded his skills.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            12 hours ago
-                                                        </div>
-                                                    </div>
+                      
+                     <!--numTel-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">N° Téléphone</label>  
+                          <div class="col-md-9 inputGroupContainer">
+                            <div class="col-md-6 input-group" style="width: 40%">
+                                <input name="num_tel" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{$membre->num_tel}}">
+                              </div>
+                          </div>
+                    </div>
+                     <br><br>
+                     
+                    <!--role-->
+                    <div class="row">
+                      <div class="col-md-7">
+                      <div class="form-group">
+                              <label class="col-md-6 control-label">Role</label>  
+                                <div class="col-md-6 input-group">
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                    @if($membre->role=='responsable')
+                                       <label>
+                                             <input type="radio"  value="enseignant" name="role"> <i></i> enseignant nrml
+                                        </label>
+                                    @endif
+                                     @if($membre->role=='enseignant')
+                                       <label>
+                                             <input type="radio"  value="responsable" name="role"> <i></i> responsable
+                                        </label>
+                                    @endif
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="i-checks pull-left">
+                                      <label>
+                                             <input type="radio" checked="" value="{{$membre->role}}" name="role"> <i></i> {{$membre->role}}</label>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+              </fieldset>
+                   <div class="row" style="padding-top: 30px; margin-left: 35%;">
+              <a href="{{ url('enseignant/'.$membre->id.'/details')}}" class=" btn btn-lg btn-default"><i class="fa  fa-mail-reply"></i> &nbsp;Annuler</a>
+               <button type="submit" class=" btn btn-lg btn-primary"><i class="fa fa-check"></i> Modifier</button> 
+                  </div>
+                  </form>
 
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
 
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
 
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
 
-                                                        logged in.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            12 hours ago
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
 
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
 
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-power-off btn-inverse no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-
-                                                        logged out.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            16 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-activity clearfix">
-                                                    <div>
-                                                        <i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
-                                                        <a class="user" href="#"> Alex Doe </a>
-
-                                                        logged in.
-                                                        <div class="time">
-                                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                                            16 hours ago
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="tools action-buttons">
-                                                        <a href="#" class="blue">
-                                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                                        </a>
-
-                                                        <a href="#" class="red">
-                                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
                                             </div><!-- /.col -->
-                                        </div><!-- /.row -->
+                                        </div>
+                                        <!--fin-->
 
                                         <div class="space-12"></div>
 
-                                        <div class="center">
-                                            <button type="button" class="btn btn-sm btn-primary btn-white btn-round">
-                                                <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
-                                                <span class="bigger-110">View more activities</span>
+                                        
+                                    </div>
+                                     <!-- /#feed -->
 
-                                                <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
-                                            </button>
-                                        </div>
-                                    </div><!-- /#feed -->
-
+                                        
                                     <div id="friends" class="tab-pane">
                                         <div class="profile-users clearfix">
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar4.png" alt="Bob Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
+                                            @foreach($membres as $membre)
+                                          
+                                          
+                 <div class="itemdiv memberdiv">
+                 
+                        <div class="inline pos-rel col-md-3 element-animate">
+                            <div class="user ">
+                                                      
+                                                    
+                                <img src="{{asset($membre->photo)}}" alt="Image"  title="{{$membre->name}} {{$membre->prenom}}" class="img-thumbnail img-responsive img-circle" id="photo" 
+                                  >                            
+                            </div>
+                            
+                            <div class="body">
                                                         <div class="name">
-                                                            <a href="#">
+                                                            <a href="{{ url('membres/'.$membre->id.'/details')}}">
                                                                 <span class="user-status status-online"></span>
-                                                                Bob Doe
+                                                                {{$membre->nom}}{{$membre->prenom}}
                                                             </a>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="popover">
+                            </div>
+                  
+                            <div class="popover">
                                                         <div class="arrow"></div>
 
                                                         <div class="popover-content">
-                                                            <div class="bolder">Content Editor</div>
+                                                            <div class="bolder">{{$membre->role}}</div>
 
                                                             <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
-                                                                <span class="green"> 20 mins ago </span>
+                                                                <i class="fa fa-envelope middle bigger-120 orange"></i>
+                                                                <span class="green"> {{$membre->email}} </span>
                                                             </div>
 
                                                             <div class="hr dotted hr-8"></div>
 
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
+                                                            <div class="tools ">
+                                                               <a href="{{ url('enseignant/'.$membre->id.'/details')}}">
+                                                                    <i class="glyphicon glyphicon-user
+                                                                    blue bigger-120"></i>
+                                                                    <span class="green">Profile </span>
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            </div>
+                        </div>
 
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" alt="Rose Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-offline"></span>
-                                                                Rose Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">Graphic Designer</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 grey"></i>
-                                                                <span class="grey"> 30 min ago </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar.png" alt="Jim Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-busy"></span>
-                                                                Jim Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">SEO &amp; Advertising</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 red"></i>
-                                                                <span class="grey"> 1 hour ago </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar5.png" alt="Alex Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-idle"></span>
-                                                                Alex Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">Marketing</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
-                                                                <span class=""> 40 minutes idle </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar2.png" alt="Phil Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-online"></span>
-                                                                Phil Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">Public Relations</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
-                                                                <span class="green"> 2 hours ago </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar3.png" alt="Susan Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-online"></span>
-                                                                Susan Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">HR Management</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 orange"></i>
-                                                                <span class="green"> 20 mins ago </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar1.png" alt="Jennifer Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-offline"></span>
-                                                                Jennifer Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">Graphic Designer</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 grey"></i>
-                                                                <span class="grey"> 2 hours ago </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemdiv memberdiv">
-                                                <div class="inline pos-rel">
-                                                    <div class="user">
-                                                        <a href="#">
-                                                            <img src="{{asset('frontEnd')}}/assets/images/avatars/avatar3.png" alt="Alexa Doe's avatar" />
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="body">
-                                                        <div class="name">
-                                                            <a href="#">
-                                                                <span class="user-status status-offline"></span>
-                                                                Alexa Doe
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popover">
-                                                        <div class="arrow"></div>
-
-                                                        <div class="popover-content">
-                                                            <div class="bolder">Accounting</div>
-
-                                                            <div class="time">
-                                                                <i class="ace-icon fa fa-clock-o middle bigger-120 grey"></i>
-                                                                <span class="grey"> 4 hours ago </span>
-                                                            </div>
-
-                                                            <div class="hr dotted hr-8"></div>
-
-                                                            <div class="tools action-buttons">
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-facebook-square blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                                                </a>
-
-                                                                <a href="#">
-                                                                    <i class="ace-icon fa fa-google-plus-square red bigger-150"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                  </div>
+           
+                                             @endforeach
+                                            
                                         </div>
 
                                         <div class="hr hr10 hr-double"></div>
@@ -1189,11 +817,6 @@
 @section('scriptHeader')
  <script src="assets/js/jquery-2.1.4.min.js"></script>
 
-        <!-- <![endif]-->
-
-        <!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
         <script type="text/javascript">
             if('ontouchstart' in document.documentElement) document.write("<script src='{{asset('frontEnd')}}/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
         </script>
@@ -1224,433 +847,9 @@
 
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
-            jQuery(function($) {
-            
-                //editables on first profile page
-                $.fn.editable.defaults.mode = 'inline';
-                $.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
-                $.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>'+
-                                            '<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';    
-                
-                //editables 
-                
-                //text editable
-                $('#username')
-                .editable({
-                    type: 'text',
-                    name: 'username'        
-                });
-            
-            
-                
-                //select2 editable
-                var countries = [];
-                $.each({ "CA": "Canada", "IN": "India", "NL": "Netherlands", "TR": "Turkey", "US": "United States"}, function(k, v) {
-                    countries.push({id: k, text: v});
-                });
-            
-                var cities = [];
-                cities["CA"] = [];
-                $.each(["Toronto", "Ottawa", "Calgary", "Vancouver"] , function(k, v){
-                    cities["CA"].push({id: v, text: v});
-                });
-                cities["IN"] = [];
-                $.each(["Delhi", "Mumbai", "Bangalore"] , function(k, v){
-                    cities["IN"].push({id: v, text: v});
-                });
-                cities["NL"] = [];
-                $.each(["Amsterdam", "Rotterdam", "The Hague"] , function(k, v){
-                    cities["NL"].push({id: v, text: v});
-                });
-                cities["TR"] = [];
-                $.each(["Ankara", "Istanbul", "Izmir"] , function(k, v){
-                    cities["TR"].push({id: v, text: v});
-                });
-                cities["US"] = [];
-                $.each(["New York", "Miami", "Los Angeles", "Chicago", "Wysconsin"] , function(k, v){
-                    cities["US"].push({id: v, text: v});
-                });
-                
-                var currentValue = "NL";
-                $('#country').editable({
-                    type: 'select2',
-                    value : 'NL',
-                    //onblur:'ignore',
-                    source: countries,
-                    select2: {
-                        'width': 140
-                    },      
-                    success: function(response, newValue) {
-                        if(currentValue == newValue) return;
-                        currentValue = newValue;
-                        
-                        var new_source = (!newValue || newValue == "") ? [] : cities[newValue];
-                        
-                        //the destroy method is causing errors in x-editable v1.4.6+
-                        //it worked fine in v1.4.5
-                        /**         
-                        $('#city').editable('destroy').editable({
-                            type: 'select2',
-                            source: new_source
-                        }).editable('setValue', null);
-                        */
-                        
-                        //so we remove it altogether and create a new element
-                        var city = $('#city').removeAttr('id').get(0);
-                        $(city).clone().attr('id', 'city').text('Select City').editable({
-                            type: 'select2',
-                            value : null,
-                            //onblur:'ignore',
-                            source: new_source,
-                            select2: {
-                                'width': 140
-                            }
-                        }).insertAfter(city);//insert it after previous instance
-                        $(city).remove();//remove previous instance
-                        
-                    }
-                });
-            
-                $('#city').editable({
-                    type: 'select2',
-                    value : 'Amsterdam',
-                    //onblur:'ignore',
-                    source: cities[currentValue],
-                    select2: {
-                        'width': 140
-                    }
-                });
-            
-            
-                
-                //custom date editable
-                $('#signup').editable({
-                    type: 'adate',
-                    date: {
-                        //datepicker plugin options
-                            format: 'yyyy/mm/dd',
-                        viewformat: 'yyyy/mm/dd',
-                         weekStart: 1
-                         
-                        //,nativeUI: true//if true and browser support input[type=date], native browser control will be used
-                        //,format: 'yyyy-mm-dd',
-                        //viewformat: 'yyyy-mm-dd'
-                    }
-                })
-            
-                $('#age').editable({
-                    type: 'spinner',
-                    name : 'age',
-                    spinner : {
-                        min : 16,
-                        max : 99,
-                        step: 1,
-                        on_sides: true
-                        //,nativeUI: true//if true and browser support input[type=number], native browser control will be used
-                    }
-                });
-                
-            
-                $('#login').editable({
-                    type: 'slider',
-                    name : 'login',
-                    
-                    slider : {
-                         min : 1,
-                          max: 50,
-                        width: 100
-                        //,nativeUI: true//if true and browser support input[type=range], native browser control will be used
-                    },
-                    success: function(response, newValue) {
-                        if(parseInt(newValue) == 1)
-                            $(this).html(newValue + " hour ago");
-                        else $(this).html(newValue + " hours ago");
-                    }
-                });
-            
-                $('#about').editable({
-                    mode: 'inline',
-                    type: 'wysiwyg',
-                    name : 'about',
-            
-                    wysiwyg : {
-                        //css : {'max-width':'300px'}
-                    },
-                    success: function(response, newValue) {
-                    }
-                });
-                
-                
-                
-                // *** editable avatar *** //
-                try {//ie8 throws some harmless exceptions, so let's catch'em
-            
-                    //first let's add a fake appendChild method for Image element for browsers that have a problem with this
-                    //because editable plugin calls appendChild, and it causes errors on IE at unpredicted points
-                    try {
-                        document.createElement('IMG').appendChild(document.createElement('B'));
-                    } catch(e) {
-                        Image.prototype.appendChild = function(el){}
-                    }
-            
-                    var last_gritter
-                    $('#avatar').editable({
-                        type: 'image',
-                        name: 'avatar',
-                        value: null,
-                        //onblur: 'ignore',  //don't reset or hide editable onblur?!
-                        image: {
-                            //specify ace file input plugin's options here
-                            btn_choose: 'Change Avatar',
-                            droppable: true,
-                            maxSize: 110000,//~100Kb
-            
-                            //and a few extra ones here
-                            name: 'avatar',//put the field name here as well, will be used inside the custom plugin
-                            on_error : function(error_type) {//on_error function will be called when the selected file has a problem
-                                if(last_gritter) $.gritter.remove(last_gritter);
-                                if(error_type == 1) {//file format error
-                                    last_gritter = $.gritter.add({
-                                        title: 'File is not an image!',
-                                        text: 'Please choose a jpg|gif|png image!',
-                                        class_name: 'gritter-error gritter-center'
-                                    });
-                                } else if(error_type == 2) {//file size rror
-                                    last_gritter = $.gritter.add({
-                                        title: 'File too big!',
-                                        text: 'Image size should not exceed 100Kb!',
-                                        class_name: 'gritter-error gritter-center'
-                                    });
-                                }
-                                else {//other error
-                                }
-                            },
-                            on_success : function() {
-                                $.gritter.removeAll();
-                            }
-                        },
-                        url: function(params) {
-                            // ***UPDATE AVATAR HERE*** //
-                            //for a working upload example you can replace the contents of this function with 
-                            //examples/profile-avatar-update.js
-            
-                            var deferred = new $.Deferred
-            
-                            var value = $('#avatar').next().find('input[type=hidden]:eq(0)').val();
-                            if(!value || value.length == 0) {
-                                deferred.resolve();
-                                return deferred.promise();
-                            }
-            
-            
-                            //dummy upload
-                            setTimeout(function(){
-                                if("FileReader" in window) {
-                                    //for browsers that have a thumbnail of selected image
-                                    var thumb = $('#avatar').next().find('img').data('thumb');
-                                    if(thumb) $('#avatar').get(0).src = thumb;
-                                }
-                                
-                                deferred.resolve({'status':'OK'});
-            
-                                if(last_gritter) $.gritter.remove(last_gritter);
-                                last_gritter = $.gritter.add({
-                                    title: 'Avatar Updated!',
-                                    text: 'Uploading to server can be easily implemented. A working example is included with the template.',
-                                    class_name: 'gritter-info gritter-center'
-                                });
-                                
-                             } , parseInt(Math.random() * 800 + 800))
-            
-                            return deferred.promise();
-                            
-                            // ***END OF UPDATE AVATAR HERE*** //
-                        },
-                        
-                        success: function(response, newValue) {
-                        }
-                    })
-                }catch(e) {}
-                
-                
-            
-                //another option is using modals
-                $('#avatar2').on('click', function(){
-                    var modal = 
-                    '<div class="modal fade">\
-                      <div class="modal-dialog">\
-                       <div class="modal-content">\
-                        <div class="modal-header">\
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>\
-                            <h4 class="blue">Change Avatar</h4>\
-                        </div>\
-                        \
-                        <form class="no-margin">\
-                         <div class="modal-body">\
-                            <div class="space-4"></div>\
-                            <div style="width:75%;margin-left:12%;"><input type="file" name="file-input" /></div>\
-                         </div>\
-                        \
-                         <div class="modal-footer center">\
-                            <button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Submit</button>\
-                            <button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
-                         </div>\
-                        </form>\
-                      </div>\
-                     </div>\
-                    </div>';
-                    
-                    
-                    var modal = $(modal);
-                    modal.modal("show").on("hidden", function(){
-                        modal.remove();
-                    });
-            
-                    var working = false;
-            
-                    var form = modal.find('form:eq(0)');
-                    var file = form.find('input[type=file]').eq(0);
-                    file.ace_file_input({
-                        style:'well',
-                        btn_choose:'Click to choose new avatar',
-                        btn_change:null,
-                        no_icon:'ace-icon fa fa-picture-o',
-                        thumbnail:'small',
-                        before_remove: function() {
-                            //don't remove/reset files while being uploaded
-                            return !working;
-                        },
-                        allowExt: ['jpg', 'jpeg', 'png', 'gif'],
-                        allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-                    });
-            
-                    form.on('submit', function(){
-                        if(!file.data('ace_input_files')) return false;
-                        
-                        file.ace_file_input('disable');
-                        form.find('button').attr('disabled', 'disabled');
-                        form.find('.modal-body').append("<div class='center'><i class='ace-icon fa fa-spinner fa-spin bigger-150 orange'></i></div>");
-                        
-                        var deferred = new $.Deferred;
-                        working = true;
-                        deferred.done(function() {
-                            form.find('button').removeAttr('disabled');
-                            form.find('input[type=file]').ace_file_input('enable');
-                            form.find('.modal-body > :last-child').remove();
-                            
-                            modal.modal("hide");
-            
-                            var thumb = file.next().find('img').data('thumb');
-                            if(thumb) $('#avatar2').get(0).src = thumb;
-            
-                            working = false;
-                        });
-                        
-                        
-                        setTimeout(function(){
-                            deferred.resolve();
-                        } , parseInt(Math.random() * 800 + 800));
-            
-                        return false;
-                    });
-                            
-                });
-            
-                
-            
-                //////////////////////////////
-                $('#profile-feed-1').ace_scroll({
-                    height: '250px',
-                    mouseWheelLock: true,
-                    alwaysVisible : true
-                });
-            
-                $('a[ data-original-title]').tooltip();
-            
-                $('.easy-pie-chart.percentage').each(function(){
-                var barColor = $(this).data('color') || '#555';
-                var trackColor = '#E2E2E2';
-                var size = parseInt($(this).data('size')) || 72;
-                $(this).easyPieChart({
-                    barColor: barColor,
-                    trackColor: trackColor,
-                    scaleColor: false,
-                    lineCap: 'butt',
-                    lineWidth: parseInt(size/10),
-                    animate:false,
-                    size: size
-                }).css('color', barColor);
-                });
-              
-                ///////////////////////////////////////////
-            
-                //right & left position
-                //show the user info on right or left depending on its position
-                $('#user-profile-2 .memberdiv').on('mouseenter touchstart', function(){
-                    var $this = $(this);
-                    var $parent = $this.closest('.tab-pane');
-            
-                    var off1 = $parent.offset();
-                    var w1 = $parent.width();
-            
-                    var off2 = $this.offset();
-                    var w2 = $this.width();
-            
-                    var place = 'left';
-                    if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) place = 'right';
-                    
-                    $this.find('.popover').removeClass('right left').addClass(place);
-                }).on('click', function(e) {
-                    e.preventDefault();
-                });
-            
-            
-                ///////////////////////////////////////////
-                $('#user-profile-3')
-                .find('input[type=file]').ace_file_input({
-                    style:'well',
-                    btn_choose:'Change avatar',
-                    btn_change:null,
-                    no_icon:'ace-icon fa fa-picture-o',
-                    thumbnail:'large',
-                    droppable:true,
-                    
-                    allowExt: ['jpg', 'jpeg', 'png', 'gif'],
-                    allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-                })
-                .end().find('button[type=reset]').on(ace.click_event, function(){
-                    $('#user-profile-3 input[type=file]').ace_file_input('reset_input');
-                })
-                .end().find('.date-picker').datepicker().next().on(ace.click_event, function(){
-                    $(this).prev().focus();
-                })
-                $('.input-mask-phone').mask('(999) 999-9999');
-            
-                $('#user-profile-3').find('input[type=file]').ace_file_input('show_file_list', [{type: 'image', name: $('#avatar').attr('src')}]);
-            
-            
-                ////////////////////
-                //change profile
-                $('[data-toggle="buttons"] .btn').on('click', function(e){
-                    var target = $(this).find('input[type=radio]');
-                    var which = parseInt(target.val());
-                    $('.user-profile').parent().addClass('hide');
-                    $('#user-profile-'+which).parent().removeClass('hide');
-                });
-                
-                
-                
-                /////////////////////////////////////
-                $(document).one('ajaxloadstart.page', function(e) {
-                    //in ajax mode, remove remaining elements before leaving page
-                    try {
-                        $('.editable').editable('destroy');
-                    } catch(e) {}
-                    $('[class*=select2]').remove();
-                });
-            });
+           //iciii
         </script>
-
+         <script src="{{asset('frontEnd')}}/js/editJs.js"></script>
 <!--user profil 1 scripte -->
 
 
