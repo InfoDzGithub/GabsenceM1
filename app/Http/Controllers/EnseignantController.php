@@ -12,6 +12,7 @@ use Illuminate\Http\UploadedFile;
 
 use App\Enseignant;
 use App\Responsable;
+
 use App\Matiere;
  
 class EnseignantController extends Controller
@@ -92,7 +93,14 @@ class EnseignantController extends Controller
         //if( Auth::user()->role->nom == 'admin')
            // {
         $membre = Enseignant::find($id);
-
+             if($membre->role== 'responsable')
+            {
+                
+                
+                $user = DB::table('responsables')
+                 ->where('enseignants_id', '=',$id);
+                $user->delete();
+            }
         $membre->delete();
         return redirect('enseignant');
             //}
@@ -121,9 +129,9 @@ class EnseignantController extends Controller
         else{
         
          $matieres = DB::table('matieres')
-                ->join('enseignant_has_matiere', 'enseignant_has_matiere.matieres_id', '=', 'matieres.id')
+                ->join('enseignant_matiere', 'enseignant_matiere.matieres_id', '=', 'matieres.id')
                 ->select('*', DB::raw('matieres.id as idMat'))
-                  ->where('enseignant_has_matiere.enseignants_id', '=',$id)
+                  ->where('enseignant_matiere.enseignants_id', '=',$id)
                   ->get();
         } 
         
@@ -165,12 +173,13 @@ public function edit($id)
         else{
         
          $matieres = DB::table('matieres')
-                ->join('enseignant_has_matiere', 'enseignant_has_matiere.matieres_id', '=', 'matieres.id')
+                ->join('enseignant_matiere', 'enseignant_matiere.matieres_id', '=', 'matieres.id')
                 ->select('*', DB::raw('matieres.id as idMat'))
-                  ->where('enseignant_has_matiere.enseignants_id', '=',$id)
+                  ->where('enseignant_matiere.enseignants_id', '=',$id)
                   ->get();
         } 
         $membres=Enseignant::all();
+        /////////////////////////////////////////////
         return view('admin.editEnseignant')->with([
             'membre' => $membre,
             'age'=>$age,
@@ -189,12 +198,12 @@ public function edit($id)
     {
        $membre = Enseignant::find($id);
         
-        if($request->hasFile('img')){
+        /*if($request->hasFile('img')){
             $file = $request->file('img');
             $file_name = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('/uploads/photo'),$file_name);
 
-                       }
+                       }*/
              
 
             $membre->nom = $request->input('nom');
@@ -204,8 +213,17 @@ public function edit($id)
             $membre->grade = $request->input('grade');
             $membre->password = Hash::make($request->input('password'));
             $membre->num_tel = $request->input('num_tel');
-            $membre->photo = 'uploads/photo/'.$file_name;
+           // $membre->photo = 'uploads/photo/'.$file_name;
+            if($membre->role== 'responsable')
+            {
+                
+                
+                $user = DB::table('responsables')
+                 ->where('enseignants_id', '=',$id);
+                $user->delete();
+            }
 
+//sexe
              $fields = Input::get('sexe');
                   if($fields == 'Femme'){
                    $membre->sexe = $fields;
@@ -225,12 +243,21 @@ public function edit($id)
                 
                    
             $membre->save();
-            /*if($membre->role== 'responsable')
+            ////modif de table responsables
+            
+             if($membre->role== 'responsable')
                 {
-                     $responsable=new Responsable();
+                  
+                  $nbre = DB::table('responsables')->distinct('idResp')
+                  ->where('enseignants_id', '=',$id)->count();
+                  if($nbre==0)
+                  {
+                 $responsable=new Responsable();
                  $responsable->enseignants_id = $membre->id;
                  $responsable->save();
-                }*/
+                  }
+                }
+            
 
         return redirect('enseignant/'.$id.'/details');
 
