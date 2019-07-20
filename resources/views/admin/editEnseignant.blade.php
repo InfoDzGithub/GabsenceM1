@@ -285,7 +285,7 @@
        <!--/****************************/-->  
         <form class="well form-horizontal" action=" {{url('enseignant/'. $membre->id) }} " method="POST"  id="contact_form"> 
         {{ csrf_field() }} 
-         <!--@csrf_field and {{ method_field('PUT') }}-->
+         
 <fieldset>
                         <!--nom-->
                     <div class="form-group ">

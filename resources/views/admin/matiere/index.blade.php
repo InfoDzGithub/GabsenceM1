@@ -123,15 +123,15 @@
                     </td>
                    <td>
     <div class="btn-group">
-        <form action="{{ url('enseignant/'.$matiere->id)}}" method="post">
+        <form action="{{ url('matiere/'.$matiere->id)}}" method="post">
               {{csrf_field()}}
               {{method_field('DELETE')}}
                
-              <a href="{{ url('enseignant/'.$matiere->id.'/details')}}" class="btn btn-info">
+              <a href="{{ url('matiere/'.$matiere->id.'/details')}}" class="btn btn-info">
                 <i class="fa fa-eye"></i>
               </a>
                        
-              <a href="{{ url('enseignant/'.$matiere->id.'/edit')}}" class="btn btn-default">
+              <a href="{{ url('matiere/'.$matiere->id.'/edit')}}" class="btn btn-default">
                 <i class="fa fa-edit"></i>
               </a>
                       

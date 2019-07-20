@@ -53,6 +53,29 @@ class MatiereController extends Controller
         return redirect('matiere');
 
     }
+/**********************************************************/
+public function edit($id)
+    {
+      $matiere = Matiere::find($id);
+      $membres=Enseignant::all();
+      $responsables = Responsable::all();
+       $listEns = DB::table('enseignant_matieres')
+                   ->join('enseignants', 'enseignants.id', '=', 'enseignant_matieres.enseignants_id')
+                ->where('enseignant_matieres.matieres_id', '=',$id)
+                ->get();
+         return view('admin.matiere.edit')->with([
+            'membres' => $membres,
+            'responsables' => $responsables,
+            'matiere'=>$matiere,
+            'listEns'=>$listEns
+
+            
+        ]);
+       
+            
+        
+    
+    }
 
 
 }
