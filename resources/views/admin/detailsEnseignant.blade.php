@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','LRI | details un enseignant')
+@section('title','GBS | details un enseignant')
 @section('cssHeader')
 
         <link rel="stylesheet" href="{{asset('frontEnd')}}/assets/css/bootstrap.min.css" />
@@ -489,7 +489,7 @@
                             
                             <div class="body">
                                                         <div class="name">
-                                                            <a href="{{ url('membres/'.$membre->id.'/details')}}">
+                                                            <a href="{{ url('enseignant/'.$membre->id.'/details')}}">
                                                                 <span class="user-status status-online"></span>
                                                                 {{$membre->nom}}{{$membre->prenom}}
                                                             </a>

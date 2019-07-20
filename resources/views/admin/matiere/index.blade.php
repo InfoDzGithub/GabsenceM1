@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','GBS | Listes des Enseignants')
+@section('title','GBS | Liste Des Modules')
 
 @section('asidebar')
                     <ul class="nav navbar-nav left-sidebar-menu-pro">
@@ -33,7 +33,17 @@
                     </ul>
 @endsection           
 @section('content')     
+<?php
+ try
+{
+    $bdd = new PDO('mysql:host=localhost;dbname=gabsence;charset=utf8', 'root', '');
 
+}
+        catch(Exception $e)
+        {
+                die('Erreur : ' . $e->getMessage());
+        } 
+?>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
@@ -41,11 +51,11 @@
                             <div class="sparkline13-list shadow-reset">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd">
-                                        <h1>Liste <span class="table-project-n">des Enseignants</span>:</h1>
+                                        <h1>Liste <span class="table-project-n">Des Modules</span>:</h1>
                                         <div class="sparkline13-outline-icon">
                                             <div class="button-style-four btn-mg-b-10">
-                                                <form action="{{url('enseignant/create')}}">
-                                                   <button type="submit" class="btn btn-custon-four btn-success">Ajouter un nouveau Enseignant
+                                                <form action="{{url('matiere/create')}}">
+                                                   <button type="submit" class="btn btn-custon-four btn-success">Ajouter un nouveau module
                                                    </button>
                                                 </form> 
                                             </div>
@@ -67,75 +77,67 @@
                                                 <tr>
                                                     <th data-field="state" data-checkbox="true"></th>
                                                     <th data-field="id">ID</th>
-                                                    <th data-field="nom" data-editable="true">Nom</th>
-                                                    <th data-field="prenom" data-editable="true">Prenom</th>
-                                                    <th data-field="date" data-editable="true">Date</th>
-                                                    <th data-field="sexe" data-editable="true">Sexe</th>
-                                                    <th data-field="email" data-editable="true">Email</th>
-                                                    <th data-field="num_tel" data-editable="true">Num Tel</th>
-                                                    <th data-field="grade" data-editable="true">Grade</th>
-                                                    <th data-field="Role" data-editable="true">Role</th>
+                                                    <th data-field="nom" data-editable="true">Nom matiere</th>
+                                                    <th data-field="prenom" data-editable="true">Responsable</th>
+                                                    <th data-field="date" data-editable="true">Les enseignants</th>
+                                                    
                                                    <th data-field="action">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                @foreach($membres as $membre)
+                @foreach($matieres as $matiere)
                 <tr>
+                <?php 
+            $req="SELECT nom, prenom from enseignants e,responsables r where e.id=r.enseignants_id and r.idResp=$matiere->responsables_id" ;
+                    $reponse = $bdd->prepare($req); 
+                    $reponse->execute();
+                     $row=$reponse->fetch();
+            
+            
+                     //$row2=$reponse2->fetch();
+                  ?>
                     <td></td>
-                    <td>{{$membre->id}}</td>
-                    <td>{{$membre->nom}}</td>
-                    <td>{{$membre->prenom}}</td>
-                    <td>{{$membre->date_N}}</td>
-                    <td>{{$membre->sexe}}</td>
-                    <td>{{$membre->email}}</td>
-                    <td>{{$membre->num_tel}}</td>
-                    <td>{{$membre->grade}}</td>
-                    <td>{{$membre->role}}</td>
-                    <!--td class="datatable-ct">
-                        <div class="modal-area-button">
-                                                            <a class="Primary mg-b-10" href="#" data-toggle="modal" data-target="#PrimaryModalftblack"><i class="fa fa-user"></i></a>
-                                                            <a class="Danger danger-color" href="#" data-toggle="modal" data-target="#DangerModalftblack"><i class="fa fa-trash"></i></a>
-                        </div>
-                        <div id="DangerModalftblack" class="modal modal-adminpro-general FullColor-popup-DangerModal PrimaryModal-bgcolor fade" role="dialog">
-
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-close-area modal-close-df">
-                                        <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i>
-                                        </a>
-                                    </div>
-                                    <div class="modal-body">
-                                        <span class="adminpro-icon adminpro-danger-error modal-check-pro information-icon-pro"></span>
-                                        <h2>Danger!</h2>
-                                        <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page</p>
-                                    </div>
-                                    <div class="modal-footer footer-modal-admin">
-                                        <a data-dismiss="modal" href="#">Cancel</a>
-                                        <a href="{{ url('enseignant/'.$membre->id)}}">
-                                        Process</a>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td-->
+                    <td>{{$matiere->id}}</td>
+                    <td>{{$matiere->nomMat}}</td>
+                    <td><?php echo $row['nom']; ?><?php echo $row['prenom']; ?></td>
+                    
+                      
+                     
                     <td>
-                     <div class="btn-group">
-          <form action="{{ url('enseignant/'.$membre->id)}}" method="post">
+                       <?php 
+                        $req2="SELECT nom,prenom from enseignants e,enseignant_matieres em where e.id=em.enseignants_id and em.matieres_id=$matiere->id" ;
+                        $reponse2 = $bdd->prepare($req2); 
+                        $reponse2->execute();
+                              while($row2=$reponse2->fetch()){
+                        //
+                        
+                        
+                       echo '<h3>'.
+                        $row2['nom']." ". $row2['prenom']
+                         .'</h3><br>';
+                     }
+                       ?>
+                         
+                         
+                    
+                    </td>
+                   <td>
+    <div class="btn-group">
+        <form action="{{ url('enseignant/'.$matiere->id)}}" method="post">
               {{csrf_field()}}
               {{method_field('DELETE')}}
                
-              <a href="{{ url('enseignant/'.$membre->id.'/details')}}" class="btn btn-info">
+              <a href="{{ url('enseignant/'.$matiere->id.'/details')}}" class="btn btn-info">
                 <i class="fa fa-eye"></i>
               </a>
                        
-              <a href="{{ url('enseignant/'.$membre->id.'/edit')}}" class="btn btn-default">
+              <a href="{{ url('enseignant/'.$matiere->id.'/edit')}}" class="btn btn-default">
                 <i class="fa fa-edit"></i>
               </a>
                       
-              <a href="#supprimer{{ $membre->id }}Modal" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i>
+              <a href="#supprimer{{ $matiere->id }}Modal" role="button" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o"></i>
               </a>
-              <div id="supprimer{{ $membre->id }}Modal" class="modal modal-adminpro-general FullColor-popup-DangerModal PrimaryModal-bgcolor fade" role="dialog">
+              <div id="supprimer{{ $matiere->id }}Modal" class="modal modal-adminpro-general FullColor-popup-DangerModal PrimaryModal-bgcolor fade" role="dialog">
 
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -149,7 +151,7 @@
                                         <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page</p>
                                     </div>
                                      <div class="modal-footer">
-                                      <form class="form-inline" action="{{ url('$membre->id')}}"  method="POST">
+                                      <form class="form-inline" action="{{ url('$matiere->id')}}"  method="POST">
                                           @method('DELETE')
                                           @csrf
                                       <button type="button" class="btn btn-light" data-dismiss="modal">Non</button>
@@ -159,11 +161,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        
-          </form>
-      </div>
-                  </td>                                  
+        </form>
+    </div>
+                    </td>                                  
                 </tr>
                                                 @endforeach
                                              </tbody>

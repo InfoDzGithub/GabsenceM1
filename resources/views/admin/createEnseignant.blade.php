@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','LRI | Ajouter un enseignant')
+@section('title','GBS | Ajouter un Enseignant')
 
 @section('asidebar')
 

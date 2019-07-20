@@ -38,9 +38,13 @@ class EnseignantController extends Controller
         
         if($request->hasFile('img'))
             {
-               $file_name = time().'.'.$file->getClientOriginalExtension();
-                 
-                $file->move(public_path('/uploads/photo'),$file_name);
+          $file_name = time().'.'.$file->getClientOriginalExtension();
+          $file->move(public_path('/uploads/photo'),$file_name);
+         /* $file = $request->file('detail');
+
+            $file_name = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/article'),$file_name);
+            $article->detail = '/uploads/article/'.$file_name;*/
 
             }
         else{
@@ -129,9 +133,9 @@ class EnseignantController extends Controller
         else{
         
          $matieres = DB::table('matieres')
-                ->join('enseignant_matiere', 'enseignant_matiere.matieres_id', '=', 'matieres.id')
+                ->join('enseignant_matieres', 'enseignant_matieres.matieres_id', '=', 'matieres.id')
                 ->select('*', DB::raw('matieres.id as idMat'))
-                  ->where('enseignant_matiere.enseignants_id', '=',$id)
+                  ->where('enseignant_matieres.enseignants_id', '=',$id)
                   ->get();
         } 
         
@@ -173,9 +177,9 @@ public function edit($id)
         else{
         
          $matieres = DB::table('matieres')
-                ->join('enseignant_matiere', 'enseignant_matiere.matieres_id', '=', 'matieres.id')
+                ->join('enseignant_matieres', 'enseignant_matieres.matieres_id', '=', 'matieres.id')
                 ->select('*', DB::raw('matieres.id as idMat'))
-                  ->where('enseignant_matiere.enseignants_id', '=',$id)
+                  ->where('enseignant_matieres.enseignants_id', '=',$id)
                   ->get();
         } 
         $membres=Enseignant::all();
