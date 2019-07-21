@@ -76,6 +76,46 @@ public function edit($id)
         
     
     }
+    /******************************************************/
+    public function update(Request $request , $id)
+    {
+       $matiere = Matiere::find($id);
+
+            $matiere->nomMat = $request->input('nom');
+            $matiere->responsables_id =$request->input('responsable');
+                   
+            $matiere->save();
+            $members =  $request->input('membre');
+        $enseignant_matiere = EnseignantMatiere::where('matieres_id',$id);
+        $enseignant_matiere->delete();
+        
+        foreach ($members as $key => $value) {
+            $enseignant_matiere = new EnseignantMatiere();
+           $enseignant_matiere->enseignants_id = $value;
+            $enseignant_matiere->matieres_id = $matiere->id;
+            $enseignant_matiere->save();
+
+         } 
+            
+
+        return redirect('matiere');//faut changer la direction en page details
+
+    }
+/****************************************************************/
+public function destroy($id)
+    {
+        //if( Auth::user()->role->nom == 'admin')
+           // {
+        $matiere = Matiere::find($id);
+
+        $enseignant_matiere = DB::table('enseignant_matieres')
+          ->where('matieres_id', '=',$id);
+          $enseignant_matiere->delete();
+            
+        $matiere->delete();
+        return redirect('matiere');
+            //}
+    }
 
 
 }

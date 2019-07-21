@@ -126,7 +126,7 @@
                     $reponse1->execute();
                      $row1=$reponse1->fetch();
 ?>  
-                     <option> <?php echo $row1['nom']; ?> <?php echo $row1['prenom']; ?></option>                        
+                     <option value="{{$matiere->responsables_id}}"> <?php echo $row1['nom']; ?> <?php echo $row1['prenom']; ?></option>                        
                                 @foreach($responsables as $responsable)
 
                                     <option value="{{$responsable->idResp}}">
