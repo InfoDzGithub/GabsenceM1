@@ -40,6 +40,10 @@ class MatiereController extends Controller
           
 
             $matiere->nomMat = $request->input('nom');
+            $matiere->heurCour = $request->input('cour');
+            $matiere->heurTD = $request->input('td');
+            $matiere->heurTP = $request->input('tp');
+            $matiere->cofficient = $request->input('coefficient');
             $matiere->responsables_id = $request->input('responsable');
 			$matiere->save();
             $members =  $request->input('membre');
@@ -58,6 +62,7 @@ public function edit($id)
     {
       $matiere = Matiere::find($id);
       $membres=Enseignant::all();
+      
       $responsables = Responsable::all();
        $listEns = DB::table('enseignant_matieres')
                    ->join('enseignants', 'enseignants.id', '=', 'enseignant_matieres.enseignants_id')
@@ -82,6 +87,10 @@ public function edit($id)
        $matiere = Matiere::find($id);
 
             $matiere->nomMat = $request->input('nom');
+            $matiere->heurCour = $request->input('cour');
+            $matiere->heurTD = $request->input('td');
+            $matiere->heurTP = $request->input('tp');
+            $matiere->cofficient = $request->input('coefficient');
             $matiere->responsables_id =$request->input('responsable');
                    
             $matiere->save();

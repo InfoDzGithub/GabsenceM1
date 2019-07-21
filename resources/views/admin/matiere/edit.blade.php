@@ -106,8 +106,59 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+                            <!--cour-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Seance Cour</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input  name="cour" class="form-control" value="{{$matiere->heurCour}}" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--td-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Seance TD</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input  name="td" class="form-control" value="{{$matiere->heurTD}}" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--tp-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Seance TP</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input  name="tp" class="form-control" value="{{$matiere->heurTP}}" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--coeff-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Coefficient</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <div class="input-group">
+                                  <span class="input-group-addon">  <i class="fa fa-list-ol"></i></span>
+                                        <select name="coefficient" class="form-control select">
+                                          <option selected>{{$matiere->cofficient}}</option>
+
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                          <option>4</option>
+                                        </select>
+                                    </div>
+                                </div></div>
+                            </div> 
                            <!--resp-->
                             <div class="form-group-inner">
                                 <div class="row">

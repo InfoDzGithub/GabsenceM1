@@ -100,8 +100,58 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+                             <!--seance Cours-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Seance Cour</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="cour" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                             <!--seance td-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Seance TD</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="td" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                             <!--seance tp-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Seance TP</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="tp" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                             <!--coeff-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Coefficient</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <div class="input-group">
+                                  <span class="input-group-addon">  <i class="fa fa-list-ol"></i></span>
+                                        <select name="coefficient" class="form-control select">
+                                          <option></option>
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                          <option>4</option>
+                                        </select>
+                                    </div>
+                                </div></div>
+                            </div> 
                            <!--resp-->
                             <div class="form-group-inner">
                                 <div class="row">
@@ -113,7 +163,9 @@
                               <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
                                   <select name="responsable" class="form-control selectpicker">
+                                  <option></option>
                                   @foreach($responsables as $responsable)
+
                                     <option value="{{$responsable->idResp}}">
                                 
 <?php 

@@ -170,7 +170,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                     <div class="project-details-dt">
-                                                        <span>8</span>
+                                                        <span>{{$matiere->heurCour}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,7 +184,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                     <div class="project-details-dt">
-                                                        8
+                                                       {{$matiere->heurTD}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,7 +198,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                     <div class="project-details-dt">
-                                                        <span>4</span>
+                                                        <span>{{$matiere->heurTP}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,7 +214,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                     <div class="project-details-dt">
-                                                        <span>2</span>
+                                                        <span>{{$matiere->cofficient}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -261,7 +261,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                   @foreach($listEns as $ens)
  
                        
-                                                        <a href="#"><img src="{{asset($ens->photo)}}" alt="" title="{{$ens->nom}} {{$ens->prenom}}" />
+                                                        <a href="#"><img src="{{asset($ens-> photo)}}" alt="" title="{{$ens->nom}} {{$ens->prenom}}" />
                                                         </a>
                                                         @endforeach
                                                     </div>
