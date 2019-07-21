@@ -26,6 +26,7 @@ Route::delete('enseignant/{id}','EnseignantController@destroy');
 Route::get('matiere','MatiereController@index');
 Route::get('matiere/create','MatiereController@create');
 Route::get('matieres','MatiereController@store');
+Route::get('matiere/{id}/details','MatiereController@details');
 Route::get('matiere/{id}/edit','MatiereController@edit');
 Route::post('matiere/{id}','MatiereController@update');
 Route::delete('matiere/{id}','MatiereController@destroy');

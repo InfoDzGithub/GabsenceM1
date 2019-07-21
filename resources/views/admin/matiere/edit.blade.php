@@ -33,7 +33,7 @@
                             
                         </li>
                     </ul>
-     @endsection
+@endsection
      @section('content')
      <?php
  try
