@@ -34,4 +34,6 @@ Route::delete('matiere/{id}','MatiereController@destroy');
 Route::get('examen/{id}/create','ExamenController@create');
 Route::get('examens/{id}','ExamenController@store');
 Route::get('matiere/{id}/details','MatiereController@details');
-Route::get('downloadFile/{id}/telecharge/{sujet}','ExamenController@down');
+Route::get('examen/{id}','ExamenController@destroy');
+Route::get('examen/{id}/edit','ExamenController@edit');
+Route::post('examen/{id}','ExamenController@update');

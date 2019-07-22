@@ -2,6 +2,7 @@
 
 @section('title','GBS | detaille d une Matiere')
 @section('cssHeader')
+
     <link rel="stylesheet" href="{{asset('frontEnd')}}/css/normalize.css">
     <link rel="stylesheet" href="{{asset('frontEnd')}}/css/c3.min.css">
     <link rel="stylesheet" href="{{asset('frontEnd')}}/style.css">
@@ -420,7 +421,8 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
             </div>
             <div id="menu1" class="tab-pane fade animated bounceInUp">
                 <div class="project-details-completeness">
-                    <form action="{{url('examen/'.$matiere->id.'/create')}}">
+                    <form action="{{url('examen/'.$matiere->id.'/create')}}"> {{csrf_field()}}
+              {{method_field('DELETE')}}
                         <button type="submit" class="btn btn-custon-four btn-success">Creer Un Examan</button>
                     </form> 
                     <table class="table table-striped">
@@ -429,17 +431,53 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                             <th>TYPE</th>
                             <th>TITRE</th>
                             <th>Lien de sujet</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($examens as $examen)
-                            <tr>
+                        <tr>
                             <td>
                             <span class="label label-primary"><i class="fa fa-check"></i> {{$examen->type}}</span>
                             </td>
                             <td>{{$examen->titre}}</td>
                             <td><a href="download/{{$examen->sujet}}" class="btn btn-primary" download="">download</a></td>
-                            </tr>
+<td>
+ <!--a href="{{ url('examen/'.$examen->id.'/edit')}}" >
+                          <i class="fa fa-edit"></i>
+ </a>
+ <a href="{{ url('examen/'.$examen->id)}}" role="button"  data-toggle="modal"><i class="fa fa-trash-o"></i>
+ </a-->@method('DELETE')
+     @csrf
+        <div class="hidden-sm hidden-xs action-buttons">
+                                        
+                                         <a class="green" href="{{ url('examen/'.$examen->id.'/edit')}}">
+                                         <i class="ace-icon fa fa-pencil bigger-130"></i>   </a><a class="red" href="{{ url('examen/'.$examen->id)}}">
+                                         <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                         </a>
+                                         </div>
+                                         <div class="hidden-md hidden-lg">
+                                         <div class="inline pos-rel">
+                                         <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                         <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                         </button>
+                                         <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                         <li><a href="{{ url('examen/'.$examen->id.'/edit')}}" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green">
+                                         <i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span></a>
+                                         </li>
+                                         <li> <a href="{{ url('examen/'.$examen->id)}}" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                         <span class="red">
+                                         <i class="ace-icon fa fa-trash-o bigger-120"></i></span></a>
+                                         @method('DELETE')
+                                         @csrf
+                                         </li> 
+                                         </ul>
+                                         </div>
+                                         </div>
+                                         </td>          
+</td>
+                        </tr>
+
                         @endforeach
                         </tbody>
                     </table>
@@ -457,112 +495,75 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                         </ul>
                          <div class="tab-content res-tab-content-project">
                         <div id="menu3" class="tab-pane fade in active animated zoomInLeft">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <div class="clearfix">
-                                                                <div class="pull-right tableTools-container"></div>
-                                                            </div>
-                                                            <div class="table-header">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="clearfix">
+                                            <div class="pull-right tableTools-container">
+                                            </div>
+                                        </div>
+                                        <div class="table-header">
                                                                 Results for "Latest Registered Domains"
-                                                            </div>
+                                        </div>
 
                                                             <!-- div.table-responsive -->
 
                                                             <!-- div.dataTables_borderWrap -->
-                                                            <div>
-                                                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th class="center">
-                                                                                <label class="pos-rel">
-                                                                                    <input type="checkbox" class="ace" />
-                                                                                    <span class="lbl"></span>
-                                                                                </label>
-                                                                            </th>
-                                                                            <th>matricule</th>
-                                                                            <th>nom</th>
-                                                                            <th class="hidden-480">prenom</th>
-
-                                                                            <th>
-                                                                                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                                                                                date naissance
-                                                                            </th>
-                                                                            <th class="hidden-480">etat</th>
-
-                                                                            <th>exclure</th>
-                                                                        </tr>
-                                                                    </thead>
-
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td class="center">
-                                                                                <label class="pos-rel">
-                                                                                    <input type="checkbox" class="ace" />
-                                                                                    <span class="lbl"></span>
-                                                                                </label>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <a href="#">app.com</a>
-                                                                            </td>
-                                                                            <td>$45</td>
-                                                                            <td class="hidden-480">3,330</td>
-                                                                            <td>Feb 12</td>
-
-                                                                            <td class="hidden-480">
-                                                                                <span class="label label-sm label-warning">Expiring</span>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="hidden-sm hidden-xs action-buttons">
-                                                                                    <a class="blue" href="#">
-                                                                                        <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                                                    </a>
-
-                                                                                    <a class="green" href="#">
-                                                                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                                                    </a>
-
-                                                                                    <a class="red" href="#">
-                                                                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                                    </a>
-                                                                                </div>
-
-                                                                                <div class="hidden-md hidden-lg">
-                                                                                    <div class="inline pos-rel">
-                                                                                        <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                                            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                                                        </button>
-
-                                                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                                            <li>
-                                                                                                <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                                                                    <span class="blue">
-                                                                                                        <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                                                                    </span>
-                                                                                                </a>
-                                                                                            </li>
-
-                                                                                            <li>
-                                                                                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                                                                    <span class="green">
-                                                                                                        <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                                                    </span>
-                                                                                                </a>
-                                                                                            </li>
-
-                                                                                            <li>
-                                                                                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                                    <span class="red">
-                                                                                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                                                                    </span>
-                                                                                                </a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
+                                        <div>
+                                            <table id="dynamic-table" class="table table-striped table-bordered table-hover"><thead>
+                                            <tr><th class="center">
+                                            <label class="pos-rel">
+                                            <input type="checkbox" class="ace" /><span class="lbl"></span>
+                                            </label></th>
+                                            <th>matricule</th>
+                                            <th>nom</th>
+                                            <th class="hidden-480">prenom</th>
+                                            <th> <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                                            date naissance
+                                            </th>
+                                            <th class="hidden-480">etat</th>
+                                            <th>exclure</th>
+                                            </tr>
+                                         </thead>
+                                         <tbody>
+                                         <tr>
+                                         <td class="center">
+                                         <label class="pos-rel"> 
+                                         <input type="checkbox" class="ace" /><span class="lbl"></span>
+                                         </label>
+                                         </td>
+                                         <td>
+                                         <a href="#">app.com</a>
+                                         </td>
+                                         <td>$45</td>
+                                         <td class="hidden-480">3,330</td>
+                                         <td>Feb 12</td>
+                                         <td class="hidden-480">
+                                         <span class="label label-sm label-warning">Expiring</span></td>
+                                         <td>                          <div class="hidden-sm hidden-xs action-buttons">
+                                         <a class="blue" href="#">
+                                         <i class="ace-icon fa fa-search-plus bigger-130"></i></a>
+                                         <a class="green" href="#">
+                                         <i class="ace-icon fa fa-pencil bigger-130"></i>   </a><a class="red" href="#">
+                                         <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                         </a>
+                                         </div>
+                                         <div class="hidden-md hidden-lg">
+                                         <div class="inline pos-rel">
+                                         <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                         <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                         </button>
+                                         <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close"><li><a href="#" class="tooltip-info" data-rel="tooltip" title="View"><span class="blue"><i class="ace-icon fa fa-search-plus bigger-120"></i></span></a></li>                           <li><a href="#" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green">
+                                         <i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span></a>
+                                         </li>
+                                         <li> <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                         <span class="red">
+                                         <i class="ace-icon fa fa-trash-o bigger-120"></i></span></a>
+                                         </li> 
+                                         </ul>
+                                         </div>
+                                         </div>
+                                         </td>
+                                          </tr>
 
                                                                         <tr>
                                                                             <td class="center">
@@ -2104,12 +2105,12 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="project-details-completeness">
-                                                    </div>
+                                            </table>
+                                        </div>
+                                     </div>
+                                </div>
+                                <div class="project-details-completeness">
+                                </div>
                         </div>
                         <div id="menu4" class="tab-pane fade animated bounceInUp">
                                                     <div class="row">
@@ -3849,4 +3850,4 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
         <script src="{{asset('frontEnd')}}/assets/js/buttons.print.min.js"></script>
         <script src="{{asset('frontEnd')}}/assets/js/buttons.colVis.min.js"></script>
         <script src="{{asset('frontEnd')}}/assets/js/dataTables.select.min.js"></script>
-@endsection
+     @endsection
