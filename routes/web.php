@@ -30,3 +30,8 @@ Route::get('matiere/{id}/details','MatiereController@details');
 Route::get('matiere/{id}/edit','MatiereController@edit');
 Route::post('matiere/{id}','MatiereController@update');
 Route::delete('matiere/{id}','MatiereController@destroy');
+/***********************Examen****************************************/
+Route::get('examen/{id}/create','ExamenController@create');
+Route::get('examens/{id}','ExamenController@store');
+Route::get('matiere/{id}/details','MatiereController@details');
+Route::get('downloadFile/{id}/telecharge/{sujet}','ExamenController@down');

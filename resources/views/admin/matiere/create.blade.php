@@ -143,7 +143,7 @@
                                        <div class="input-group">
                                   <span class="input-group-addon">  <i class="fa fa-list-ol"></i></span>
                                         <select name="coefficient" class="form-control select">
-                                          <option></option>
+                                          <option>Select Coef</option>
                                           <option>1</option>
                                           <option>2</option>
                                           <option>3</option>
@@ -163,7 +163,7 @@
                               <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
                                   <select name="responsable" class="form-control selectpicker">
-                                  <option></option>
+                                  <option>Seclect responsable</option>
                                   @foreach($responsables as $responsable)
 
                                     <option value="{{$responsable->idResp}}">

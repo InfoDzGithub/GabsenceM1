@@ -258,10 +258,10 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
 
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                     <div class="project-details-img">
-                                  @foreach($listEns as $ens)
+                                                      @foreach($listEns as $ens)
  
                        
-                                                        <a href="#"><img src="{{asset($ens-> photo)}}" alt="" title="{{$ens->nom}} {{$ens->prenom}}" />
+                                                        <a href="{{ url('enseignant/'.$ens->id.'/details')}}"><img src="{{asset($ens-> photo)}}" alt="" title="{{$ens->nom}} {{$ens->prenom}}" />
                                                         </a>
                                                         @endforeach
                                                     </div>
@@ -298,20 +298,20 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                 <li><a data-toggle="tab" href="#menu2">Les Exclusion</a>
                                                 </li>
                                             </ul>
-                                            <div class="tab-content res-tab-content-project">
-                                                <div id="home" class="tab-pane fade in active animated zoomInLeft">
-                                                    <div class="project-details-completeness">
-                                                        <table class="table table-striped">
-                                                            <thead>
-                                                                <tr>
+        <div class="tab-content res-tab-content-project">
+            <div id="home" class="tab-pane fade in active animated zoomInLeft">
+                     <div class="project-details-completeness">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
                                                                     <th>ID</th>
                                                                     <th>NOM</th>
                                                                     <th>COUR</th>
                                                                     <th>TD</th>
                                                                     <th>TP</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+                                </tr>
+                            </thead>
+                            <tbody>
                                                                 <tr>
                                                                     <td>
                                                                         <span class="label label-primary"><i class="fa fa-check"></i> 1</span>
@@ -414,111 +414,49 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                                        Enseiganat TP
                                                                     </td>
                                                                 </tr>
-                                                               
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div id="menu1" class="tab-pane fade animated bounceInUp">
-                                                    <div class="project-details-completeness">
-                                                        <form action="ajouterExmn.html">
-                                                           <button type="submit" class="btn btn-custon-four btn-success">Creer Un Examan</button>
-                                                       </form> 
-                                                        <table class="table table-striped">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>TYPE</th>
-                                                                    <th>TITRE</th>
-                                                                    <th>LIEN</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="label label-primary"><i class="fa fa-check"></i> CC</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        Control semstre1
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="examnAdmin.html">lien</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="label label-primary"><i class="fa fa-check"></i> Examn</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        Examn semstre1
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="examnAdmin.html">lien</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="label label-primary"><i class="fa fa-check"></i> rarapage</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        Ratrapage semstre1
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="examnAdmin.html">lien</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="label label-primary"><i class="fa fa-check"></i> CC</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        Control semstre1
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="examnAdmin.html">lien</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="label label-primary"><i class="fa fa-check"></i> Examn</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        Examn semstre1
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="examnAdmin.html">lien</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="label label-primary"><i class="fa fa-check"></i> rarapage</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        Ratrapage semstre1
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="examnAdmin.html">lien</a>
-                                                                    </td>
-                                                                </tr>
-
-                                                                
-
-                                                               
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div id="menu2" class="tab-pane fade animated bounceInUp">
-                                                    <div class="project-details-completeness">
-                                                       <div class="project-details-tab">
-                                            <ul class="nav nav-tabs res-pd-less-sm">
-                                                <li class="active"><a data-toggle="tab" href="#menu3">TD</a>
-                                                </li>
-                                                <li><a data-toggle="tab" href="#menu4">TP</a>
-                                                </li>
+                            </tbody>
+                        </table>
+                     </div>
+            </div>
+            <div id="menu1" class="tab-pane fade animated bounceInUp">
+                <div class="project-details-completeness">
+                    <form action="{{url('examen/'.$matiere->id.'/create')}}">
+                        <button type="submit" class="btn btn-custon-four btn-success">Creer Un Examan</button>
+                    </form> 
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>TYPE</th>
+                            <th>TITRE</th>
+                            <th>Lien de sujet</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($examens as $examen)
+                            <tr>
+                            <td>
+                            <span class="label label-primary"><i class="fa fa-check"></i> {{$examen->type}}</span>
+                            </td>
+                            <td>{{$examen->titre}}</td>
+                            <td><a href="download/{{$examen->sujet}}" class="btn btn-primary" download="">download</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="menu2" class="tab-pane fade animated bounceInUp">
+                <div class="project-details-completeness">
+                    <div class="project-details-tab">
+                        <ul class="nav nav-tabs res-pd-less-sm">
+                            <li class="active"><a data-toggle="tab" href="#menu3">TD</a>
+                            </li>
+                            <li><a data-toggle="tab" href="#menu4">TP</a>
+                            </li>
                                                 
-                                            </ul>
-                                            <div class="tab-content res-tab-content-project">
-                                                <div id="menu3" class="tab-pane fade in active animated zoomInLeft">
+                        </ul>
+                         <div class="tab-content res-tab-content-project">
+                        <div id="menu3" class="tab-pane fade in active animated zoomInLeft">
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="clearfix">
@@ -2172,8 +2110,8 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                     </div>
                                                     <div class="project-details-completeness">
                                                     </div>
-                                                </div>
-                                                <div id="menu4" class="tab-pane fade animated bounceInUp">
+                        </div>
+                        <div id="menu4" class="tab-pane fade animated bounceInUp">
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="clearfix">
@@ -3829,10 +3767,10 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                                     <div class="project-details-completeness">
                                                         
                                                     </div>
-                                                </div>
+                        </div>
                                                 
-                                            </div>
-                                        </div> 
+                    </div>
+                 </div> 
                                                     </div>
                                                 </div>
                                             </div>

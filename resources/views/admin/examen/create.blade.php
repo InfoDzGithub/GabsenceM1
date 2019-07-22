@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','GBS | Ajouter un Enseignant')
+@section('title','GBS | Ajouter un examen')
 
 @section('asidebar')
 
@@ -35,31 +35,45 @@
                     </ul>
      @endsection
      @section('content')
+     <?php
+ try
+{
+    $bdd = new PDO('mysql:host=localhost;dbname=gabsence;charset=utf8', 'root', '');
+
+}
+        catch(Exception $e)
+        {
+                die('Erreur : ' . $e->getMessage());
+        } 
+?>
 <div class="basic-form-area mg-b-15">
     <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
             <div class="sparkline12-list shadow-reset mg-t-30">
                 <div class="sparkline12-hd">
+                                <div class="sparkline12-hd">
                                     <div class="main-sparkline12-hd">
-                                        <h1>Création d'un nouveu compte Enseignant</h1>
+                                        <h1>Création d'un Examen</h1>
                                         <div class="sparkline12-outline-icon">
                                             <span class="sparkline12-collapse-link"><i class="fa fa-chevron-up"></i></span>
                                             <span><i class="fa fa-wrench"></i></span>
                                             <span class="sparkline12-collapse-close"><i class="fa fa-times"></i></span>
                                         </div>
                                     </div>
+                                </div>
                 </div>
     <div class="sparkline12-graph">
         <div class="basic-login-form-ad">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="all-form-element-inner">
-                        <form action="{{url('enseignants')}}" method="GET">
+                        <form action="{{url('examens/'.$idMatiere)}}" method="GET">
                         {{ csrf_field() }}
                             <div class="form-group-inner">
                                 <div class="row">
-                                    <img src="{{asset('frontEnd')}}/img/Enseignat.png">
+                                    <img src="{{asset('frontEnd')}}/img/exmn.png">
+                                    
                                 </div>
                             </div>
                             <div class="form-group-inner">
@@ -70,180 +84,94 @@
                             <div class="form-group-inner">
                                 <div class="row">
                                     <div class="col-lg-9">
-                                        <H2>Nouvaux Enseignant</H2>
+                                        <H2>Nouveau Examen</H2>
                                         <hr width="30%" size="3">
                                     </div>
                                 </div>
                             </div>
-                            <!--nom-->
+                            <!--titre examen-->
                             <div class="form-group-inner">
                                 <div class="row">
                                     <div class="col-lg-4">
-                                         <label class="login2 pull-right pull-right-pro">Nom</label>
+                                         <label class="login2 pull-right pull-right-pro">Titre</label>
                                     </div>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nom" class="form-control" />
+                                        <input type="text" name="titre" class="form-control" />
                                     </div>
                                 </div>
                             </div>
-                            <!--prenom-->
-                            <div class="form-group-inner">
+                             <!--nom matiere>
+                              <div class="form-group-inner">
                                 <div class="row">
                                     <div class="col-lg-4">
-                                         <label class="login2 pull-right pull-right-pro">Prenom</label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                         <input type="text" name="prenom" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!--sex Box star-->
-                            <div class="form-group-inner">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                            <label class="login2 pull-right pull-right-pro">Sexe </label>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="bt-df-checkbox pull-left">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="i-checks pull-left">
-                           <label>
-                           <input type="radio" value="Femme" name="sexe"> <i></i> femme 
-                           </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="i-checks pull-left">    
-                            <label>
-                            <input type="radio" checked="" value="Homme" name="sexe"> <i></i> homme 
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                            <!--Date naissance-->
-                            <div class="form-group-inner">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                      <label class="login2 pull-right pull-right-pro">Date Naissance</label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group data-custon-pick" id="data_1">
-                                          <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" name="dateN" class="form-control" value="10/04/2018">
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <!--role-->
-                            <div class="form-group-inner">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                       <label class="login2 pull-right pull-right-pro">Rôle </label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="bt-df-checkbox pull-left">
-                                           <div class="row">
-                                             <div class="col-lg-12">
-                                               <div class="i-checks pull-left">
-                                               <label><input type="radio" value="enseignant" name="role"> <i></i> Enseignant Normal </label>
-                                               </div>
-                                             </div>
-                                           </div>
-                                        <div class="row">
-                                           <div class="col-lg-12">
-                                             <div class="i-checks pull-left">
-                                             <label>
-                                             <input type="radio" checked="" value="responsable" name="role"> <i></i> Enseignant Responsable</label>
-                                             </div>
-                                           </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                </div>
-                            </div>
-                           <!--grade-->
-                            <div class="form-group-inner">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label class="login2 pull-right pull-right-pro">Grade</label>
+                                        <label class="login2 pull-right pull-right-pro">Matiere</label>
                                     </div>
                                     <div class="col-lg-4">
                                        <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
-                                  <select name="grade" class="form-control selectpicker">
-                                    <option>Select grade</option>
-                                    <option>MAA</option>
-                                    <option>MAB</option>
-                                    <option>MCA</option>
-                                    <option>MCB</option>
-                                    <option>Doctorant</option>
-                                    <option>Professeur</option>
+                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                  <select name="matiere" class="form-control selectpicker">
+                                  <option>Select matiere</option>
+                                  @foreach($matieres as $matiere)
+
+                                    <option value="{{$matiere->id}}">
+                                 {{$matiere->nomMat}}
+        
+                                      </option>
+                                    @endforeach
                                   </select>
 
                               </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                           
-                            <!--numTel-->
-                            <div class="form-group-inner">
+                            </div-->
+                             <!--date examen--><div class="form-group-inner">
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <label class="login2 pull-right pull-right-pro">Num Tel</label>
+                                      <label class="login2 pull-right pull-right-pro">Date Examen</label>
                                     </div>
-                                    <div class="col-lg-4">
-                                       <input type="text" name="num_tel" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!--email-->
-                            <div class="form-group-inner">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label class="login2 pull-right pull-right-pro">Email</label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input type="email" name="email" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            
-                            <!--password-->
-                            <div class="form-group-inner">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label class="login2 pull-right pull-right-pro">Password</label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input type="password" class="form-control" name="password" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!--photo-->
-                            <div class="form-group-inner">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label class="login2 pull-right pull-right-pro">Photo</label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                       <input name="img" type="file" >
-                                    </div>
-                                </div>
-                            </div>
 
-                           
+                                    <div class="col-lg-4">
+                                        <div class="form-group data-custon-pick" id="data_1">
+                                          <div class="input-group date">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input type="text" name="date_examen" class="form-control" value="10/04/2018">
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--typr-->
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Type Examen</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                        <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" name="type">
+                                <option >Select Type</option>
+                                 <option >CC</option>
+                                 <option >TEST</option>
+                                <option >EXAMAN</option>
+                                <option >RATRAPAGE</option>
+                                                                    
+                        </select>
+                                      </div>
+                                </div></div>
+                           </div>
+                             <!--lien examen-->
+                            
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                         <label class="login2 pull-right pull-right-pro">Sujet</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input name="sujet" type="file" id="exampleInputFile" value="{{old('sujet')}}">
+                                    </div>
+                                </div>
+                            </div>
+                             
                             <div style="padding-top: 30px; margin-left: 35%;">
                                 <a href="#" class=" btn btn-lg btn-default"><i class="fa  fa-mail-reply"></i> &nbsp;Annuler
                                 </a>

@@ -13,7 +13,7 @@ use App\Enseignant;
 use App\EnseignantMatiere;
 use App\Responsable;
 use App\Matiere;
-
+use App\Examen;
 class MatiereController extends Controller
 {
      public function index()
@@ -130,14 +130,18 @@ public function destroy($id)
  public function details($id)
     {
         $matiere = Matiere::find($id);
+
          $listEns = DB::table('enseignant_matieres')
                    ->join('enseignants', 'enseignants.id', '=', 'enseignant_matieres.enseignants_id')
                 ->where('enseignant_matieres.matieres_id', '=',$id)
                 ->get();
-
+          $examens = DB::table('examens')
+                ->where('examens.matieres_id', '=',$id)
+                ->get();
         return view('admin.matiere.details')->with([
             'matiere' => $matiere,
-            'listEns'=>$listEns
+            'listEns'=>$listEns,
+            'examens'=>$examens
        ]);
     } 
 }

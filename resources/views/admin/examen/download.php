@@ -1,0 +1,45 @@
+<?php
+include('connection.php');
+ 
+if(isset($_GET['id']))
+{
+
+	$id=$GET['id'];
+	/*$file=$id;
+	if(file_exists($file))
+	{
+		header('Content-Description:'.'sujet examen');
+		header('Content length: '.filesize($file))
+		readfile($file);
+		exit;
+	}*/
+	$filename = $_FILES['sujet']['name'];
+
+    // destination of the file on the server
+    $destination = $id;
+
+    // get the file extension
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    // the physical file on a temporary uploads directory on the server
+    $file = $_FILES['sujet']['tmp_name'];
+    $size = $_FILES['sujet']['size'];
+
+    if (!in_array($extension, ['zip', 'pdf', 'docx'])) {
+        echo "You file extension must be .zip, .pdf or .docx";
+    } elseif ($_FILES['sujet']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
+        echo "File too large!";
+    } else {
+        // move the uploaded (temporary) file to the specified destination
+        if (move_uploaded_file($file, $destination)) {
+            $sql = "INSERT INTO files (name, size, downloads) VALUES ('$filename', $size, 0)";
+            if (mysqli_query($conn, $sql)) {
+                echo "File uploaded successfully";
+            }
+        } else {
+            echo "Failed to upload file.";
+        }
+    }
+}
+
+?>
