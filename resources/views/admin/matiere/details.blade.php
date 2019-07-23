@@ -430,7 +430,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                         <tr>
                             <th>TYPE</th>
                             <th>TITRE</th>
-                            <th>Lien de sujet</th>
+                            
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -441,7 +441,7 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                             <span class="label label-primary"><i class="fa fa-check"></i> {{$examen->type}}</span>
                             </td>
                             <td>{{$examen->titre}}</td>
-                            <td><a href="download/{{$examen->sujet}}" class="btn btn-primary" download="">download</a></td>
+                            
 <td>
  <!--a href="{{ url('examen/'.$examen->id.'/edit')}}" >
                           <i class="fa fa-edit"></i>
@@ -450,9 +450,11 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
  </a-->@method('DELETE')
      @csrf
         <div class="hidden-sm hidden-xs action-buttons">
-                                        
+        <a href="download/{{$examen->sujet}}"  download="" class="blue"><span><i class="fa fa-cloud-download bigger-130"></i></span></a>                                    
+
                                          <a class="green" href="{{ url('examen/'.$examen->id.'/edit')}}">
-                                         <i class="ace-icon fa fa-pencil bigger-130"></i>   </a><a class="red" href="{{ url('examen/'.$examen->id)}}">
+                                         <i class="ace-icon fa fa-pencil bigger-130"></i>   </a>
+                                         <a class="red" href="{{ url('examen/'.$examen->id)}}">
                                          <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                          </a>
                                          </div>
@@ -462,7 +464,8 @@ $req1="SELECT nom, prenom,email from enseignants e,responsables r where e.id=r.e
                                          <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
                                          </button>
                                          <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                         <li><a href="{{ url('examen/'.$examen->id.'/edit')}}" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green">
+                                         <li>
+                                         <a href="{{ url('examen/'.$examen->id.'/edit')}}" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green">
                                          <i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span></a>
                                          </li>
                                          <li> <a href="{{ url('examen/'.$examen->id)}}" class="tooltip-error" data-rel="tooltip" title="Delete">

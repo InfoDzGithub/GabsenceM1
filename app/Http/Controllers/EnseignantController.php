@@ -38,20 +38,15 @@ class EnseignantController extends Controller
         
         if($request->hasFile('img'))
             {
-          $file_name = time().'.'.$file->getClientOriginalExtension();
-          $file->move(public_path('/uploads/photo'),$file_name);
-         /* $file = $request->file('detail');
-
+            $file = $request->file('img');
             $file_name = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('/uploads/article'),$file_name);
-            $article->detail = '/uploads/article/'.$file_name;*/
-
+            $file->move(public_path('/uploads/photo'),$file_name);
+         
             }
         else{
             $file_name="Enseignant.png";
             }
-          
-
+            
             $membre->nom = $request->input('nom');
             $membre->prenom = $request->input('prenom');
             $membre->email = $request->input('email');

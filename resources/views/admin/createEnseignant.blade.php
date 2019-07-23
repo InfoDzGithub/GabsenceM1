@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="all-form-element-inner">
-                        <form action="{{url('enseignants')}}" method="GET">
+                        <form action="{{url('enseignants')}}" method="post">
                         {{ csrf_field() }}
                             <div class="form-group-inner">
                                 <div class="row">
